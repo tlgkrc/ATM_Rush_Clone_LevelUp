@@ -1,0 +1,60 @@
+﻿using System;
+using Keys;
+using Signals;
+using UnityEngine;
+using UnityEngine.Events;
+
+namespace Managers
+{
+    public class GameManager : MonoBehaviour
+    {
+        #region Self Variables
+
+        #region Public Variables
+
+        #endregion
+
+        #endregion
+
+        private void Awake()
+        {
+            Application.targetFrameRate = 60;
+        }
+
+        #region Event Subscription
+
+        private void OnEnable()
+        {
+            SubscribeEvents(); 
+        }
+                    
+        private void OnDisable()
+        {
+            UnsubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            CoreGameSignals.Instance.onSaveGame += OnSaveGame;
+        }
+
+        private void UnsubscribeEvents()
+        {
+            CoreGameSignals.Instance.onSaveGame -= OnSaveGame;
+        }
+
+        #endregion
+        private void  OnSaveGame(SaveGameDataParams dataParams)
+        {
+            if (dataParams.Level != null)
+            {
+                ES3.Save("Level",dataParams.Level);
+            }
+
+            if (dataParams.Money != null)
+            {
+                ES3.Save("Money" ,dataParams.Money);
+            }
+        }
+    }
+}
