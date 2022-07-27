@@ -1,4 +1,5 @@
 ﻿using Data.ValueObject;
+using DG.Tweening;
 using Managers;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -42,7 +43,7 @@ namespace Controllers
 
             if (other.CompareTag("ATM"))
             {
-                //atm is moving down side
+                other.transform.parent.transform.DOMoveY(-10, .3f, false);
             }
         }
         public void SetPhysicsData(PlayerPullBackForceData forceData)

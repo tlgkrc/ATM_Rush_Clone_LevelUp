@@ -25,20 +25,18 @@ namespace Controllers
         {
             if (other.CompareTag("Portal"))
             {
-                CollectableSignals.Instance.onTouchedGate?.Invoke(transform.parent.gameObject.GetInstanceID());
+                CollectableSignals.Instance.onTouchedGate?.Invoke(collectableManager.gameObject.GetInstanceID());
             }
 
             if (other.CompareTag("Player") && !CompareTag("Collected"))
             {
-               CollectableSignals.Instance.onTouchedPlayer?.Invoke(transform.parent.gameObject);
+               CollectableSignals.Instance.onTouchedPlayer?.Invoke(collectableManager.gameObject);
                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke();
             }
 
             if (other.CompareTag("Obstacle"))
             {
-                var index = transform.parent.GetSiblingIndex();
-                CollectableSignals.Instance.onTouchedObstacle?.Invoke(index);
-                CollectableSignals.Instance.onUpdatePosition?.Invoke(index,other.transform.position);
+                CollectableSignals.Instance.onTouchedObstacle?.Invoke(collectableManager.gameObject,other.transform.position);
             }
 
             if (other.CompareTag("ATM"))
@@ -60,7 +58,8 @@ namespace Controllers
 
             if (other.CompareTag("Collected") && CompareTag("Uncollected"))
             {
-                CollectableSignals.Instance.onTouchedCollectedMoney?.Invoke(transform.parent.gameObject);
+                CollectableSignals.Instance.onTouchedCollectedMoney?.Invoke(collectableManager.gameObject);
+                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke();
             }
         }
     }

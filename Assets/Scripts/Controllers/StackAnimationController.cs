@@ -24,17 +24,15 @@ namespace Controllers
 
         #endregion
         
-        public IEnumerator MoneyScale(List<GameObject> newList,Tween tween) 
+        public IEnumerator MoneyScale(List<GameObject> newList) 
         {
-            var increasedScale = Vector3.one*1.4f ;
-            for (int i =  newList.Count -1 ;  i >= 0  ; i--)
+            var increasedScale = Vector3.one*1.3f ;
+            for (int i = 0 ; i <= newList.Count-1 ; i++)
             {
-                if (tween != null)
-                {
-                    tween.Kill(true);
-                }
-                newList[i].transform.DOScale(increasedScale, 0.14f).SetEase(Ease.Flash); 
-                newList[i].transform.DOScale(Vector3.one, .14f ).SetEase(Ease.Flash).SetDelay(.14f); 
+                var index = (newList.Count -1) - i;
+
+                newList[index].transform.DOScale(increasedScale, 0.14f).SetEase(Ease.Flash); 
+                newList[index].transform.DOScale(Vector3.one, .14f ).SetEase(Ease.Flash).SetDelay(.14f); 
                 yield return new WaitForSeconds(0.3f);
             }
         }

@@ -31,7 +31,6 @@ namespace Managers
 
         [ShowInInspector] private List<GameObject> _stackMembers = new List<GameObject>();
         private GameObject _collectables;
-        private Tween _tween;
 
         #endregion
 
@@ -53,18 +52,18 @@ namespace Managers
         {
             CollectableSignals.Instance.onTouchedPlayer += OnTakeCollectableToStack;
             ScoreSignals.Instance.onIncreasePlayerScore += OnIncreasePlayerScore;
+            ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
             CollectableSignals.Instance.onTouchedCollectedMoney += OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle += OnTouchedObstacle;
-            CollectableSignals.Instance.onUpdatePosition += OnUpdatePosition;
         }
 
         private void UnsubscribeEvents()
         {
             CollectableSignals.Instance.onTouchedPlayer -= OnTakeCollectableToStack;
             ScoreSignals.Instance.onIncreasePlayerScore -= OnIncreasePlayerScore;
+            ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
             CollectableSignals.Instance.onTouchedCollectedMoney -= OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle -= OnTouchedObstacle;
-            CollectableSignals.Instance.onUpdatePosition -= OnUpdatePosition;
         }
 
         private void OnDisable()
@@ -82,16 +81,21 @@ namespace Managers
         private void OnTakeCollectableToStack(GameObject _gO)
         {
             StackMoney(_gO);
+            RefreshStackList();
         }
         
         private void StackMoney(GameObject gO)
         {
-            Debug.Log(_tween);
             AddCollectableToStackList(gO); 
             gO.transform.SetParent(transform); 
             gO.GetComponentInChildren<Collider>().tag = "Collected";
             gO.tag = "Collected";
-            
+            RefreshStackList();
+            StartCoroutine(stackAnimationController.MoneyScale(_stackMembers));
+        }
+
+        private void RefreshStackList()
+        {
             if (_stackMembers.Count ==0)
             {
                 _stackMembers[0].transform.localPosition = Vector3.zero;
@@ -101,14 +105,11 @@ namespace Managers
                 _stackMembers[i].transform.localPosition =
                     _stackMembers[i - 1].transform.localPosition + Vector3.forward;
             }
-            
-            StartCoroutine(stackAnimationController.MoneyScale(_stackMembers,_tween));
         }
-        
+
         private void AddCollectableToStackList(GameObject gO)
         {
             _stackMembers.Add(gO);
-            _stackMembers.TrimExcess();
         }
 
         private void OnIncreasePlayerScore()
@@ -116,43 +117,42 @@ namespace Managers
             playerStackText.text = _stackMembers.Count.ToString();
         }
 
+        private void OnDecreasePlayerScore()
+        {
+            playerStackText.text = _stackMembers.Count.ToString();
+        }
+
         private void OnTouchedCollectedMoney(GameObject gO)
         {
             StackMoney(gO);
-            
         }
 
-        private void OnTouchedObstacle(int siblingIndex)
+        private void OnTouchedObstacle(GameObject gO,Vector3 obsPos)
         {
-            Destroy(transform.GetChild(siblingIndex).gameObject);
+            var siblingIndex = gO.transform.GetSiblingIndex();
+            Destroy(gO);
+            _stackMembers.Remove(gO);
             _stackMembers.TrimExcess();
+            RefreshStackList();
+            UpdateTailCondition(siblingIndex,obsPos);
+            ScoreSignals.Instance.onDecreasePlayerScore?.Invoke();
         }
 
-        private void OnUpdatePosition(int siblingIndex,Vector3 obstaclePos)
+        private void UpdateTailCondition(int siblingIndex,Vector3 obstaclePos)
         {
-            List<Vector3> updatedPosList = new List<Vector3>();
-            var newPos = Vector3.zero;
-            for (int i = siblingIndex ; i < _stackMembers.Count; i++)
+            for (int i = siblingIndex ; i < _stackMembers.Count-1; i++)
             {
-                while (newPos.x >-5 && newPos.x< 5)
-                {
-                    newPos = obstaclePos + new Vector3(Random.Range(-10,10),0f, Random.Range(5,10));
-                    if (newPos.x > -5 && newPos.x <5 && !updatedPosList.Contains(newPos))
-                    { 
-                        Debug.Log(newPos);
-                        updatedPosList.Add(newPos); 
-                        break;
-                    }
-                }
+                var newPos = new Vector3(Random.Range(-5f, 5f), 0.5f, obstaclePos.z + Random.Range(5f, 20f));
                 
                 _stackMembers[i].tag = "Uncollected"; //not neccessary two changing on tag!!!
                 _stackMembers[i].transform.GetChild(1).tag = "Uncollected";
-                _stackMembers[i].transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = false; 
-                _stackMembers[i].transform.DOJump(newPos, 2f, 1, .5f, false);
+                _stackMembers[i].transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = true; 
                 _stackMembers[i].transform.SetParent(_collectables.transform);
+                _stackMembers[i].transform.DOJump(newPos, 2f, 1, .2f, false);
                 _stackMembers.RemoveAt(i);
+                _stackMembers.TrimExcess();
+                ScoreSignals.Instance.onDecreasePlayerScore?.Invoke();
             }
-            _stackMembers.TrimExcess();
         }
     }
 }
