@@ -51,5 +51,14 @@ namespace Managers
             _atmScore += score;
             textAtmScore.text = _atmScore.ToString();
         }
+        
+        // private int playerScore = 10;
+        //
+        // int totalCollectableCount = 20
+        // private int maxPlayerScore = totalCollectableCount*3;
+        //
+        // private float multipleScore = (playerScore / maxPlayerScore ) + 1 // totalScoreOnData
+        //
+        // private float newPosYPlayerAnim = (playerScore / maxPlayerScore) * collectableScaleY * TotalCollectableCount; // gorsel show
     }
 }

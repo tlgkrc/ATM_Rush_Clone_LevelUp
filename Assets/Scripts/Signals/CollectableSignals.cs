@@ -11,5 +11,7 @@ namespace Signals
         public UnityAction<int> onTouchedGate = delegate {  };
         public UnityAction<GameObject> onTouchedCollectedMoney = delegate {  };
         public UnityAction<GameObject,Vector3> onTouchedObstacle = delegate { };
+        public UnityAction<GameObject> onTouchedWalkingPlatform = delegate {  };
+        public UnityAction<GameObject> onTouchedATM = delegate {  };
     }
 }

@@ -1,4 +1,5 @@
-﻿using Controllers;
+﻿using System;
+using Controllers;
 using Data.UnityObject;
 using Enums;
 using Signals;
@@ -18,8 +19,9 @@ namespace Managers
 
         #region Serialized Variables
         
-        [SerializeField] private CollectableMeshFilterController colMeshFilterController;
-        [SerializeField] private CollectablePhysicsController colPhysicsController;
+        [SerializeField] private CollectableMeshFilterController meshFilterController;
+        [SerializeField] private CollectablePhysicsController physicsController;
+        [SerializeField] private CollectableAnimationController animationController;
 
         #endregion
 
@@ -36,7 +38,7 @@ namespace Managers
 
         private void Start()
         {
-            colMeshFilterController.SetDefaultMesh();
+            meshFilterController.SetDefaultMesh();
         }
 
         private CollectableTypes  GetCollectableData()
@@ -54,11 +56,13 @@ namespace Managers
         private void SubscribeEvents()
         {
             CollectableSignals.Instance.onTouchedGate += OnTouchGate;
+            CollectableSignals.Instance.onTouchedWalkingPlatform += OnTouchedWalkingPlatform;
         }
 
         private void UnsubscribeEvents()
         {
             CollectableSignals.Instance.onTouchedGate -= OnTouchGate;
+            CollectableSignals.Instance.onTouchedWalkingPlatform -= OnTouchedWalkingPlatform;
         }
 
         private void OnDisable()
@@ -70,7 +74,12 @@ namespace Managers
 
         private void OnTouchGate(int instanceId)
         {
-            colMeshFilterController.UpdateMeshFilterCollectable(Data,instanceId);
+            meshFilterController.UpdateMeshFilterCollectable(Data,instanceId);
+        }
+
+        private void OnTouchedWalkingPlatform(GameObject gO)
+        {
+            animationController.StartWalkingPlatformAnim(gO);
         }
     }
 }

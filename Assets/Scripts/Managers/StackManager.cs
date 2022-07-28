@@ -55,6 +55,7 @@ namespace Managers
             ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
             CollectableSignals.Instance.onTouchedCollectedMoney += OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle += OnTouchedObstacle;
+            CollectableSignals.Instance.onTouchedATM += OnTouchedATM;
         }
 
         private void UnsubscribeEvents()
@@ -64,6 +65,7 @@ namespace Managers
             ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
             CollectableSignals.Instance.onTouchedCollectedMoney -= OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle -= OnTouchedObstacle;
+            CollectableSignals.Instance.onTouchedATM -= OnTouchedATM;
         }
 
         private void OnDisable()
@@ -86,10 +88,9 @@ namespace Managers
         
         private void StackMoney(GameObject gO)
         {
-            AddCollectableToStackList(gO); 
+            _stackMembers.Add(gO);
             gO.transform.SetParent(transform); 
             gO.GetComponentInChildren<Collider>().tag = "Collected";
-            gO.tag = "Collected";
             RefreshStackList();
             StartCoroutine(stackAnimationController.MoneyScale(_stackMembers));
         }
@@ -105,11 +106,6 @@ namespace Managers
                 _stackMembers[i].transform.localPosition =
                     _stackMembers[i - 1].transform.localPosition + Vector3.forward;
             }
-        }
-
-        private void AddCollectableToStackList(GameObject gO)
-        {
-            _stackMembers.Add(gO);
         }
 
         private void OnIncreasePlayerScore()
@@ -144,7 +140,6 @@ namespace Managers
             {
                 var newPos = new Vector3(Random.Range(-5f, 5f), 0.5f, obstaclePos.z + Random.Range(5f, 20f));
                 
-                _stackMembers[i].tag = "Uncollected"; //not neccessary two changing on tag!!!
                 _stackMembers[i].transform.GetChild(1).tag = "Uncollected";
                 _stackMembers[i].transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = true; 
                 _stackMembers[i].transform.SetParent(_collectables.transform);
@@ -153,6 +148,19 @@ namespace Managers
                 _stackMembers.TrimExcess();
                 ScoreSignals.Instance.onDecreasePlayerScore?.Invoke();
             }
+        }
+
+        private void OnTouchedATM(GameObject gO)
+        {
+            var siblingIndex = gO.transform.GetSiblingIndex();
+            Destroy(gO);
+            _stackMembers.Remove(gO);
+            _stackMembers.TrimExcess();
+            if (_stackMembers.Count>=1)
+            {
+                RefreshStackList();
+            }
+            
         }
     }
 }

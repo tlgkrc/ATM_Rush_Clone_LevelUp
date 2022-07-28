@@ -1,5 +1,6 @@
 ﻿using System;
 using Cinemachine;
+using Enums;
 using Signals;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -12,13 +13,16 @@ namespace Managers
 
         #region Serialized Variables
 
-        [SerializeField] private CinemachineVirtualCamera cmVirtualCamera;
+        public CinemachineVirtualCamera cmVirtualCamera;
+        
 
         #endregion
 
         #region Private Variables
 
         [ShowInInspector] private Vector3 _initialPosition;
+        private CameraTypes _cameraTypes = CameraTypes.InitializeCam;
+        private Animator _camAnimator;
 
         #endregion
 
@@ -26,8 +30,9 @@ namespace Managers
 
         private void Awake()
         {
-            cmVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+            _camAnimator = GetComponent<Animator>();
             GetInitialPosition();
+            SetCameraState(_cameraTypes);// send with signals,scriptable doesnt affect camera driven state
         }
 
         #region Event Subscription
@@ -84,6 +89,20 @@ namespace Managers
             cmVirtualCamera.LookAt = null;
             cmVirtualCamera.Follow = null;
             OnMoveToInitialPosition();
+        }
+
+        private void SetCameraState(CameraTypes cameraTypes)
+        {
+            if (cameraTypes == CameraTypes.InitializeCam)
+            {
+                _camAnimator.Play("RunnerCam");
+                cameraTypes = CameraTypes.RunnerCam;
+            }
+            else if(cameraTypes == CameraTypes.RunnerCam)
+            {
+                _camAnimator.Play("MiniGameCam");
+                cameraTypes = CameraTypes.MiniGameCam;
+            }
         }
     }
 }

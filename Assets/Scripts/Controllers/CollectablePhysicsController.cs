@@ -39,9 +39,9 @@ namespace Controllers
                 CollectableSignals.Instance.onTouchedObstacle?.Invoke(collectableManager.gameObject,other.transform.position);
             }
 
-            if (other.CompareTag("ATM"))
+            if (other.CompareTag("ATM") && CompareTag("Collected"))
             {
-                var meshGO = transform.parent.transform.GetChild(0).transform.GetComponent<MeshFilter>().sharedMesh.name;
+                var meshGO = collectableMeshFilterController.GetComponent<MeshFilter>().sharedMesh.name;
                 if (meshGO == "Money" )
                 {
                     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
@@ -54,12 +54,19 @@ namespace Controllers
                 {
                     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(3);
                 }
+
+                CollectableSignals.Instance.onTouchedATM?.Invoke(collectableManager.gameObject);
             }
 
             if (other.CompareTag("Collected") && CompareTag("Uncollected"))
             {
                 CollectableSignals.Instance.onTouchedCollectedMoney?.Invoke(collectableManager.gameObject);
                 ScoreSignals.Instance.onIncreasePlayerScore?.Invoke();
+            }
+
+            if (other.CompareTag("WalkingPlatform"))
+            {
+                CollectableSignals.Instance.onTouchedWalkingPlatform?.Invoke(collectableManager.gameObject);
             }
         }
     }
