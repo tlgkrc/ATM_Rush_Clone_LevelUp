@@ -1,6 +1,7 @@
 ﻿using Data.ValueObject;
 using DG.Tweening;
 using Managers;
+using Signals;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -36,9 +37,9 @@ namespace Controllers
                 PlayerPullBackForce();
             }
 
-            if (other.CompareTag("FinishLine"))
+            if (other.CompareTag("WalkingPlatform"))
             {
-                Debug.Log("FinishLine a carpti");
+                CoreGameSignals.Instance.onFinishLineReached?.Invoke();
             }
 
             if (other.CompareTag("ATM"))

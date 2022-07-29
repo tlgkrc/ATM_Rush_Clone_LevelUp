@@ -20,8 +20,5 @@ namespace Controllers
         {
             playAnimator.SetBool("isMoving" ,isMoving);
         }
-        
-        
-        
     }
 }

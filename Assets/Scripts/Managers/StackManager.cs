@@ -31,6 +31,7 @@ namespace Managers
 
         [ShowInInspector] private List<GameObject> _stackMembers = new List<GameObject>();
         private GameObject _collectables;
+        private bool _isSeperatedFromPlayer = false;
 
         #endregion
 
@@ -56,6 +57,7 @@ namespace Managers
             CollectableSignals.Instance.onTouchedCollectedMoney += OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle += OnTouchedObstacle;
             CollectableSignals.Instance.onTouchedATM += OnTouchedATM;
+            CollectableSignals.Instance.onTouchedWalkingPlatform += OnTouchedWalkingPlatform;
         }
 
         private void UnsubscribeEvents()
@@ -66,6 +68,7 @@ namespace Managers
             CollectableSignals.Instance.onTouchedCollectedMoney -= OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle -= OnTouchedObstacle;
             CollectableSignals.Instance.onTouchedATM -= OnTouchedATM;
+            CollectableSignals.Instance.onTouchedWalkingPlatform -= OnTouchedWalkingPlatform;
         }
 
         private void OnDisable()
@@ -160,7 +163,12 @@ namespace Managers
             {
                 RefreshStackList();
             }
-            
+        }
+
+        private void OnTouchedWalkingPlatform(GameObject gO)
+        {
+            _stackMembers.Remove(gO);
+            _stackMembers.TrimExcess();
         }
     }
 }

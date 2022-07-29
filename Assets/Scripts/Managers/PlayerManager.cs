@@ -57,6 +57,7 @@ namespace Managers
             CoreGameSignals.Instance.onPlay += OnPlay;
             CoreGameSignals.Instance.onReset += OnReset;
             CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
+            CoreGameSignals.Instance.onFinishLineReached += OnFinishLineReached;
         }
 
         private void UnsubscribeEvents()
@@ -68,6 +69,7 @@ namespace Managers
             CoreGameSignals.Instance.onPlay -= OnPlay;
             CoreGameSignals.Instance.onReset -= OnReset;
             CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
+            CoreGameSignals.Instance.onFinishLineReached += OnFinishLineReached;
         }
 
         private void OnDisable()
@@ -106,12 +108,17 @@ namespace Managers
         private void OnReset()
         {
             movementController.OnReset();
-            animationController.ActivatePlayerAnim(false);
         }
 
         private void OnLevelSuccessful()
         {
             movementController.IsReadyToPlay(false);
+        }
+
+        private void OnFinishLineReached()
+        {
+            movementController.IsReadyToPlay(false);
+            animationController.ActivatePlayerAnim(false);
         }
     }
 }

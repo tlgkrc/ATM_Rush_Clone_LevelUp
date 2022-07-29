@@ -1,6 +1,7 @@
 ﻿using System;
 using Controllers;
 using Data.UnityObject;
+using DG.Tweening;
 using Enums;
 using Signals;
 using UnityEngine;
@@ -14,14 +15,14 @@ namespace Managers
         #region Public Variables
 
         [Header("Data")] public CollectableTypes Data;
-        
+
         #endregion
 
         #region Serialized Variables
-        
+
         [SerializeField] private CollectableMeshFilterController meshFilterController;
         [SerializeField] private CollectablePhysicsController physicsController;
-        [SerializeField] private CollectableAnimationController animationController;
+        [SerializeField] private CollectableMovementController movementController;
 
         #endregion
 
@@ -41,7 +42,7 @@ namespace Managers
             meshFilterController.SetDefaultMesh();
         }
 
-        private CollectableTypes  GetCollectableData()
+        private CollectableTypes GetCollectableData()
         {
             return Resources.Load<CD_Collectable>("Data/CD_Collectable").collectableData.collectableTypes;
         }
@@ -62,7 +63,7 @@ namespace Managers
         private void UnsubscribeEvents()
         {
             CollectableSignals.Instance.onTouchedGate -= OnTouchGate;
-            CollectableSignals.Instance.onTouchedWalkingPlatform -= OnTouchedWalkingPlatform;
+            CollectableSignals.Instance.onTouchedWalkingPlatform += OnTouchedWalkingPlatform;
         }
 
         private void OnDisable()
@@ -74,12 +75,12 @@ namespace Managers
 
         private void OnTouchGate(int instanceId)
         {
-            meshFilterController.UpdateMeshFilterCollectable(Data,instanceId);
+            meshFilterController.UpdateMeshFilterCollectable(Data, instanceId);
         }
 
-        private void OnTouchedWalkingPlatform(GameObject gO)
+        private void OnTouchedWalkingPlatform(GameObject _gO)
         {
-            animationController.StartWalkingPlatformAnim(gO);
+            movementController.MoveOnWalkingPlatform(_gO);
         }
     }
 }

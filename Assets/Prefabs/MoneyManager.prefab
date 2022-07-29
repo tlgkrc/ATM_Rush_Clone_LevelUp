@@ -100,51 +100,6 @@ MonoBehaviour:
   - {fileID: -6749094374590335035, guid: 5cfe293773e94ec4390b42f3350b7b56, type: 3}
   - {fileID: -6390563017650441280, guid: 5cfe293773e94ec4390b42f3350b7b56, type: 3}
   - {fileID: 4738028301749549601, guid: 5cfe293773e94ec4390b42f3350b7b56, type: 3}
---- !u!1 &3457210282765961534
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1364467990517375394}
-  - component: {fileID: 4091263577191937967}
-  m_Layer: 0
-  m_Name: Anim
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1364467990517375394
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3457210282765961534}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6029934392504736890}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4091263577191937967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3457210282765961534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5b75ca385af43ff984ead9bc179ae1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  physicsController: {fileID: 404368602986277963}
-  manager: {fileID: 6250070994124950205}
 --- !u!1 &6405651171739403968
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6029934392504736890}
   - component: {fileID: 6250070994124950205}
+  - component: {fileID: 6728747926315068400}
   m_Layer: 0
   m_Name: MoneyManager
   m_TagString: Uncollected
@@ -175,7 +131,6 @@ Transform:
   m_Children:
   - {fileID: 7183722511008775458}
   - {fileID: 7265048438122299151}
-  - {fileID: 1364467990517375394}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -194,7 +149,20 @@ MonoBehaviour:
   Data: 0
   meshFilterController: {fileID: 4856473852311762820}
   physicsController: {fileID: 404368602986277963}
-  animationController: {fileID: 4091263577191937967}
+  movementController: {fileID: 6728747926315068400}
+--- !u!114 &6728747926315068400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6405651171739403968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a2863d9cd0429bba0638fec05d7ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectableManager: {fileID: 6250070994124950205}
 --- !u!1 &6622741311131122698
 GameObject:
   m_ObjectHideFlags: 0
