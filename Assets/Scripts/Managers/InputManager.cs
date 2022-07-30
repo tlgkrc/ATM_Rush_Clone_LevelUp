@@ -75,11 +75,12 @@ namespace Managers
 
         private void Update()
         {
+            IsPointerOverUIElement();
             if (!isReadyForTouch)
             {
                 return;
             }
-
+            
             if (Input.GetMouseButtonUp(0) && !IsPointerOverUIElement())
             {
                 _isTouching = false;
@@ -88,12 +89,14 @@ namespace Managers
 
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUIElement())
             {
+                
                 _isTouching = true;
                 InputSignals.Instance.onInputTaken?.Invoke();
                 if (!isFirstTimeTouchTaken)
                 {
                     isFirstTimeTouchTaken = true;
                     InputSignals.Instance.onFirstTimeTouchTaken?.Invoke();
+                    
                 }
 
                 _mousePosition = Input.mousePosition;
@@ -122,12 +125,13 @@ namespace Managers
                         }
 
                         _mousePosition = Input.mousePosition;
-                        
+
                         InputSignals.Instance.onInputDragged?.Invoke(new HorizontalInputParams()
                         {
                             XValues = _moveVector.x,
-                            ClampValues =  new Vector2(Data.ClampSides.x, Data.ClampSides.y)
+                            ClampValues = new Vector2(Data.ClampSides.x, Data.ClampSides.y)
                         });
+                        
                     }
                 }
             }
@@ -155,7 +159,7 @@ namespace Managers
             isFirstTimeTouchTaken = false;
         }
 
-        private bool IsPointerOverUIElement()
+        private bool IsPointerOverUIElement()   
         {
             var eventData = new PointerEventData(EventSystem.current);
             eventData.position = Input.mousePosition;

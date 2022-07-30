@@ -1,4 +1,5 @@
-﻿using Controllers;
+﻿using System;
+using Controllers;
 using Enums;
 using Signals;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace Managers
         #endregion
 
         #endregion
+        
 
         #region Event Subscriptions
 
@@ -61,11 +63,12 @@ namespace Managers
         private void OnPlay()
         {
             UISignals.Instance.onClosePanel?.Invoke(UIPanels.StartPanel);
+            UISignals.Instance.onOpenPanel?.Invoke(UIPanels.LevelPanel);
         }
 
         private void OnLevelSuccessful()
         {
-            UISignals.Instance.onClosePanel?.Invoke(UIPanels.StartPanel);
+            UISignals.Instance.onClosePanel?.Invoke(UIPanels.LevelPanel);
             UISignals.Instance.onOpenPanel?.Invoke(UIPanels.WinPanel);
         }
 
@@ -73,6 +76,6 @@ namespace Managers
         {
             CoreGameSignals.Instance.onPlay?.Invoke();
         }
-
+        
     }
 }

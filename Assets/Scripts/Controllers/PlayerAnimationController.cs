@@ -20,5 +20,10 @@ namespace Controllers
         {
             playAnimator.SetBool("isMoving" ,isMoving);
         }
+
+        public void MiniGamePlayerAnim(bool isFinishedPath)
+        {
+            playAnimator.SetBool("isFinishedPath" ,isFinishedPath);
+        }
     }
 }

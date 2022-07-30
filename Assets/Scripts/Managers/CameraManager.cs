@@ -13,16 +13,17 @@ namespace Managers
 
         #region Serialized Variables
 
-        public CinemachineVirtualCamera cmVirtualCamera;
+        public CinemachineStateDrivenCamera cmStateDrivenCamera;
         
 
         #endregion
 
         #region Private Variables
 
-        [ShowInInspector] private Vector3 _initialPosition;
-        private CameraTypes _cameraTypes = CameraTypes.InitializeCam;
-        private Animator _camAnimator;
+        // [ShowInInspector] private Vector3 _initialPosition;
+        // private CameraTypes _cameraTypes = CameraTypes.InitializeCam;
+        // private Animator _camAnimator;
+        private GameObject pGameObject;
 
         #endregion
 
@@ -30,79 +31,105 @@ namespace Managers
 
         private void Awake()
         {
-            _camAnimator = GetComponent<Animator>();
-            GetInitialPosition();
-            SetCameraState(_cameraTypes);// send with signals,scriptable doesnt affect camera driven state
+            pGameObject = GameObject.Find("PlayerManager");
+            // SetCameraTarget();
+            // _camAnimator = GetComponent<Animator>();
+            // GetInitialPosition();
+            // SetCameraState(CameraTypes.InitializeCam);// send with signals,scriptable doesnt affect camera driven state
         }
 
-        #region Event Subscription
-
-        private void OnEnable()
+        private void Start()
         {
-            SubscribeEvents();
+            //SetPlayerAnimator();
         }
+        //
+        // #region Event Subscription
+        //
+        // private void OnEnable()
+        // {
+        //     SubscribeEvents();
+        // }
+        //
+        // private void SubscribeEvents()
+        // {
+        //     CoreGameSignals.Instance.onPlay += OnPlay;
+        //     CoreGameSignals.Instance.onSetCameraTarget += OnSetCameraTarget;
+        //     CoreGameSignals.Instance.onReset += OnReset;
+        // }
+        //
+        // private void UnsubscribeEvents()
+        // {
+        //     CoreGameSignals.Instance.onPlay -= OnPlay;
+        //     CoreGameSignals.Instance.onSetCameraTarget -= OnSetCameraTarget;
+        //     CoreGameSignals.Instance.onReset -= OnReset;
+        // }
+        //
+        // private void OnDisable()
+        // {
+        //     UnsubscribeEvents();
+        // }
+        //
+        // #endregion
+        //
+        // private void GetInitialPosition()
+        // {
+        //     _initialPosition = transform.localPosition;
+        // }
+        //
+        // private void OnMoveToInitialPosition()
+        // {
+        //     transform.localPosition = _initialPosition;
+        // }
+        //
+        //
+        // private void OnSetCameraTarget()
+        // {       
+        //     SetCameraTarget();
+        // }
+        //
+        // private void OnReset()
+        // {
+        //     cmStateDrivenCamera.LookAt = null;
+        //     cmStateDrivenCamera.Follow = null;
+        //     OnMoveToInitialPosition();
+        //     SetCameraState(CameraTypes.InitializeCam);
+        // }
+        //
+        // private void OnPlay()
+        // {
+        //     SetCameraState(CameraTypes.RunnerCam);
+        // }
+        //
+        // private void SetCameraState(CameraTypes cameraTypes)
+        // {
+        //     if (cameraTypes == CameraTypes.InitializeCam)
+        //     {
+        //         _camAnimator.Play("InitializeCam");
+        //         cameraTypes = CameraTypes.InitializeCam;
+        //     }
+        //     else if(cameraTypes == CameraTypes.RunnerCam)
+        //     {
+        //         _camAnimator.Play("RunnerCam");
+        //         cameraTypes = CameraTypes.RunnerCam;
+        //     }
+        //     else
+        //     {
+        //         _camAnimator.Play("MiniGameCam");
+        //         cameraTypes = CameraTypes.MiniGameCam;
+        //     }
+        // }
+        //
+        // private void SetCameraTarget()
+        // {
+        //     var playerManager = FindObjectOfType<PlayerManager>().transform;
+        //     cmStateDrivenCamera.Follow = playerManager;
+        // }
 
-        private void SubscribeEvents()
-        {
-            CoreGameSignals.Instance.onPlay += SetCameraTarget;
-            CoreGameSignals.Instance.onSetCameraTarget += OnSetCameraTarget;
-            CoreGameSignals.Instance.onReset += OnReset;
-        }
+        // private void SetPlayerAnimator()
+        // {
+        //     var pAnimator = pGameObject.GetComponentInChildren<Animator>();
+        // }
 
-        private void UnsubscribeEvents()
-        {
-            CoreGameSignals.Instance.onPlay -= SetCameraTarget;
-            CoreGameSignals.Instance.onSetCameraTarget -= OnSetCameraTarget;
-            CoreGameSignals.Instance.onReset -= OnReset;
-        }
-
-        private void OnDisable()
-        {
-            UnsubscribeEvents();
-        }
-
-        #endregion
-
-        private void GetInitialPosition()
-        {
-            _initialPosition = transform.localPosition;
-        }
-
-        private void OnMoveToInitialPosition()
-        {
-            transform.localPosition = _initialPosition;
-        }
-
-        private void SetCameraTarget()
-        {
-            CoreGameSignals.Instance.onSetCameraTarget?.Invoke();
-        }
-
-        private void OnSetCameraTarget()
-        {       
-            var playerManager = FindObjectOfType<PlayerManager>().transform;
-            cmVirtualCamera.Follow = playerManager;
-        }
-
-        private void OnReset()
-        {
-            cmVirtualCamera.LookAt = null;
-            cmVirtualCamera.Follow = null;
-            OnMoveToInitialPosition();
-        }
-
-        private void SetCameraState(CameraTypes cameraTypes)
-        {
-            if (cameraTypes == CameraTypes.InitializeCam)
-            {
-                _camAnimator.Play("RunnerCam");
-                cameraTypes = CameraTypes.RunnerCam;
-            }
-            else if(cameraTypes == CameraTypes.RunnerCam)
-            {
-                _camAnimator.Play("MiniGameCam");
-                cameraTypes = CameraTypes.MiniGameCam;
-            }
-        }
+        
     }
 }

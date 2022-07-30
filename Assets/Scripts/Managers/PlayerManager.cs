@@ -119,6 +119,7 @@ namespace Managers
         {
             movementController.IsReadyToPlay(false);
             animationController.ActivatePlayerAnim(false);
+            animationController.MiniGamePlayerAnim(true);
         }
     }
 }
