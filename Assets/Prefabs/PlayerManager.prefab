@@ -1127,6 +1127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4340335811014176533}
+  - component: {fileID: 7891817750590107977}
   m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
@@ -1149,6 +1150,19 @@ Transform:
   m_Father: {fileID: 9128071747425244818}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 31.98, y: 0, z: 0}
+--- !u!114 &7891817750590107977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459408509613992168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca7630cf4fd47b892e7c070c875795c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textPlayerScore: {fileID: 4994544626543116484}
 --- !u!1 &4550298262168315637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,15 +2111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf64a83e7a9c7994bbd7ea5c6cbbe319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StackData:
-    MoneyMovementDelay: 0.3
-    Inventory: []
   stackMovementController: {fileID: 714030021597811642}
   stackPhysicsController: {fileID: 517629795399030779}
   stackAnimationController: {fileID: 2618169241018553728}
   playerStackText: {fileID: 4994544626543116484}
   playerManager: {fileID: 9128071747425244817}
-  stackingBeginPoint: {fileID: 0}
 --- !u!114 &517629795399030779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3084,6 +3094,7 @@ MonoBehaviour:
   movementController: {fileID: 9128071747425244816}
   animationController: {fileID: 1929248507774345934}
   playerPhysicsController: {fileID: 9128071746556148887}
+  playerScoreTMP: {fileID: 4994544626543116484}
 --- !u!114 &9128071747425244816
 MonoBehaviour:
   m_ObjectHideFlags: 0

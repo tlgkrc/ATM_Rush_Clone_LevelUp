@@ -7,6 +7,6 @@ namespace Data.ValueObject
     public class CollectableData
     {
         public CollectableTypes collectableTypes = CollectableTypes.Money;
-        public CollectableMeshData CollectableMeshData;
+        public CollectableMeshData collectableMeshData;
     } 
 }

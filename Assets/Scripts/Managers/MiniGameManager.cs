@@ -90,13 +90,13 @@ namespace Managers
 
         private void SubscribeEvents()
         {
-            MiniGameSignals.Instance.onSetLevelScoreToMiniGame += SetLevelScoreToMiniGame;
+            MiniGameSignals.Instance.onSetLevelScoreToMiniGame += OnSetLevelScoreToMiniGame;
             MiniGameSignals.Instance.onStartMiniGame += OnStartMiniGame;
         }
 
         private void UnsubscribeEvents()
         {
-            MiniGameSignals.Instance.onSetLevelScoreToMiniGame -= SetLevelScoreToMiniGame;
+            MiniGameSignals.Instance.onSetLevelScoreToMiniGame -= OnSetLevelScoreToMiniGame;
             MiniGameSignals.Instance.onStartMiniGame -= OnStartMiniGame;
         }
 
@@ -213,35 +213,33 @@ namespace Managers
             }
         }
 
-        private void SetLevelScoreToMiniGame(int score)
+        private void OnSetLevelScoreToMiniGame(int score)
         {
             _levelScore = score;
-            Debug.Log(_levelScore);
-            StartMiniGameAnim();
-        }
-
-        private void StartMiniGameAnim()
-        {
-            var position = targetTransform.position;
-            Vector3 newPos = new Vector3(position.x, position.y , position.z-data.cubeScale.z);
-            Debug.Log(newPos);
-            Instantiate(fakePlayer);
-            fakePlayer.transform.position = newPos;
-            //MoveFakePlayerLastPos(fakePlayer);
-        }
-
-        private void MoveFakePlayerLastPos(GameObject fPlayer)
-        {
-            var fakePlayerPos = (_levelScore / data.maxMoneyValue) * data.cubeScale.y;
-            Debug.Log(fakePlayerPos);
-            fPlayer.transform.DOMoveY(fakePlayerPos, 5, false).SetEase(Ease.Linear);
-
         }
 
         private void OnStartMiniGame()
         {
             StartMiniGameAnim();
         }
+        
+        private void StartMiniGameAnim()
+        {
+            var position = targetTransform.position;
+            Vector3 newPos = new Vector3(position.x, position.y , position.z-data.cubeScale.z);
+            Instantiate(fakePlayer);
+            fakePlayer.transform.position = newPos;
+            MoveFakePlayerLastPos(fakePlayer);
+        }
+
+        private void MoveFakePlayerLastPos(GameObject fPlayer)
+        {
+            //var fakePlayerPos = (_levelScore / data.maxMoneyValue) * data.cubeScale.y;
+            //fPlayer.transform.DOMoveY(fakePlayerPos, 5, false).SetEase(Ease.Linear);
+
+        }
+
+        
 
     }
 

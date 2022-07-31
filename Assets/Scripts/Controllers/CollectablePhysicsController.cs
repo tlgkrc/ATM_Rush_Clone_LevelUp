@@ -21,7 +21,7 @@ namespace Controllers
         #endregion
 
         #endregion
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Portal"))
@@ -31,13 +31,15 @@ namespace Controllers
 
             if (other.CompareTag("Player") && !CompareTag("Collected"))
             {
-               CollectableSignals.Instance.onTouchedPlayer?.Invoke(collectableManager.gameObject);
-               // ScoreSignals.Instance.onIncreasePlayerScore?.Invoke();
+               CollectableSignals.Instance.onTouchedPlayer?.Invoke(collectableManager.gameObject); 
+               tag = "Collected";
+               IncreasePlayerScore(transform.parent.gameObject);
             }
 
             if (other.CompareTag("Obstacle"))
             {
                 CollectableSignals.Instance.onTouchedObstacle?.Invoke(collectableManager.gameObject,other.transform.position);
+                DecreasePlayerScore(transform.parent.gameObject);
             }
 
             if ( CompareTag("Collected"))
@@ -45,47 +47,100 @@ namespace Controllers
                 var meshGO = collectableMeshFilterController.GetComponent<MeshFilter>().sharedMesh.name;
                 if (other.CompareTag("ATM"))
                 {
-                    if (meshGO == "Money" )
-                    {
-                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
-                    }
-                    else if(meshGO == "gold")
-                    {
-                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(2);
-                    }
-                    else
-                    {
-                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(3);
-                    }
+                    IncreaseAtmScore(meshGO);
                     CollectableSignals.Instance.onTouchedATM?.Invoke(collectableManager.gameObject);
+                    // if (meshGO == "Money" )
+                    // {
+                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
+                    // }
+                    // else if(meshGO == "gold")
+                    // {
+                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(2);
+                    // }
+                    // else
+                    // {
+                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(3);
+                    // }
+                    // CollectableSignals.Instance.onTouchedATM?.Invoke(collectableManager.gameObject);
                 }
 
                 if (other.CompareTag("WalkingPlatform"))
                 {
-                    meshGO = collectableMeshFilterController.GetComponent<MeshFilter>().sharedMesh.name;
-                    if (meshGO == "Money" )
-                    {
-                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
-                    }
-                    else if(meshGO == "gold")
-                    {
-                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(2);
-                    }
-                    else
-                    {
-                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(3);
-                    }
+                    // meshGO = collectableMeshFilterController.GetComponent<MeshFilter>().sharedMesh.name;
+                    IncreaseAtmScore(meshGO);
                     CollectableSignals.Instance.onTouchedWalkingPlatform?.Invoke(collectableManager.gameObject);
+                    // if (meshGO == "Money" )
+                    // {
+                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
+                    // }
+                    // else if(meshGO == "gold")
+                    // {
+                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(2);
+                    // }
+                    // else
+                    // {
+                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(3);
+                    // }
+                    
                 }
             }
 
             if (other.CompareTag("Collected") && CompareTag("Uncollected"))
             {
                 CollectableSignals.Instance.onTouchedCollectedMoney?.Invoke(collectableManager.gameObject);
-                // ScoreSignals.Instance.onIncreasePlayerScore?.Invoke();
+                tag = "Collected";
+                IncreasePlayerScore(transform.parent.gameObject);
             }
+        }
 
-            
+        private void IncreasePlayerScore(GameObject gO)
+        {
+            var state = gO.GetComponent<CollectableManager>().Data;
+            if (state == CollectableTypes.Money)
+            {
+                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke(1);
+            }
+            else if(state == CollectableTypes.Gold)
+            {
+                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke((2));
+            }
+            else
+            {
+                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke((2));
+            }
+        }
+
+        private void DecreasePlayerScore(GameObject gO)
+        {
+            var state = gO.GetComponent<CollectableManager>().Data;
+            if (state == CollectableTypes.Money)
+            {
+                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke(-1);
+            }
+            else if(state == CollectableTypes.Gold)
+            {
+                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke(-2);
+            }
+            else
+            {
+                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke(-3);
+            }
+        }
+
+        private void IncreaseAtmScore(String meshGO)
+        {
+            if (meshGO == "Money" )
+            {
+                ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
+            }
+            else if(meshGO == "gold")
+            {
+                ScoreSignals.Instance.onIncreaseATMScore?.Invoke(2);
+            }
+            else
+            {
+                ScoreSignals.Instance.onIncreaseATMScore?.Invoke(3);
+            }
         }
     }
 }

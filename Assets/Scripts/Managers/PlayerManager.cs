@@ -1,8 +1,10 @@
-﻿using Controllers;
+﻿using System;
+using Controllers;
 using Data.UnityObject;
 using Data.ValueObject;
 using Keys;
 using Signals;
+using TMPro;
 using UnityEngine;
 
 namespace Managers
@@ -22,6 +24,13 @@ namespace Managers
         [Space] [SerializeField] private PlayerMovementController movementController;
         [SerializeField] private PlayerAnimationController animationController;
         [SerializeField] private PlayerPhysicsController playerPhysicsController;
+        [SerializeField] private TextMeshPro playerScoreTMP;
+
+        #endregion
+
+        #region Private Variables
+
+        private int _playerScore;
 
         #endregion
 
@@ -32,6 +41,7 @@ namespace Managers
             Data = GetPlayerData();
             SendPlayerDataToControllers();
         }
+        
 
         private PlayerData GetPlayerData() => Resources.Load<CD_Player>("Data/CD_Player").Data;
 
@@ -53,11 +63,15 @@ namespace Managers
             InputSignals.Instance.onInputTaken += OnActivateMovement;
             InputSignals.Instance.onInputReleased += OnDeactivateMovement;
             InputSignals.Instance.onInputDragged += OnGetInputValues;
+            ScoreSignals.Instance.onIncreasePlayerScore += OnIncreasePlayerScore;
+            ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
+            
 
             CoreGameSignals.Instance.onPlay += OnPlay;
             CoreGameSignals.Instance.onReset += OnReset;
             CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
             CoreGameSignals.Instance.onFinishLineReached += OnFinishLineReached;
+       
         }
 
         private void UnsubscribeEvents()
@@ -69,7 +83,9 @@ namespace Managers
             CoreGameSignals.Instance.onPlay -= OnPlay;
             CoreGameSignals.Instance.onReset -= OnReset;
             CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
-            CoreGameSignals.Instance.onFinishLineReached += OnFinishLineReached;
+            CoreGameSignals.Instance.onFinishLineReached -= OnFinishLineReached;
+            ScoreSignals.Instance.onIncreasePlayerScore -= OnIncreasePlayerScore;
+            ScoreSignals.Instance.onDecreasePlayerScore -= OnDecreasePlayerScore;
         }
 
         private void OnDisable()
@@ -120,6 +136,23 @@ namespace Managers
             movementController.IsReadyToPlay(false);
             animationController.ActivatePlayerAnim(false);
             animationController.MiniGamePlayerAnim(true);
+        }
+
+        private void OnIncreasePlayerScore(int score)
+        {
+            _playerScore += score;
+            playerScoreTMP.text = _playerScore.ToString();
+        }
+
+        private void OnDecreasePlayerScore(int score)
+        {
+            _playerScore -= score;
+            playerScoreTMP.text = _playerScore.ToString();
+        }
+
+        public int SetFinalScore()
+        {
+            return _playerScore;
         }
     }
 }

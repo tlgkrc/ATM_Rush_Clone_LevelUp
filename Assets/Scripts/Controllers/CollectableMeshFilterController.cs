@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Enums;
 using Managers;
+using Signals;
 using UnityEngine;
 
 namespace Controllers
@@ -43,6 +44,8 @@ namespace Controllers
                     collectableManager.Data = CollectableTypes.Diamond;
                     gameObject.GetComponent<MeshFilter>().sharedMesh = meshFilters[2].sharedMesh;
                 }
+                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke(1);
+                
             }
         }
 

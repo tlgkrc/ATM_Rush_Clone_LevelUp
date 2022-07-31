@@ -5,7 +5,7 @@ namespace Enums
     [Serializable]
     public enum CollectableTypes
     {
-        Money = 0,
+        Money ,
         Gold ,
         Diamond 
     }

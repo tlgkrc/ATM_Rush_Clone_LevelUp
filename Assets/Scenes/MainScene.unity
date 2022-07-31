@@ -2358,6 +2358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cmVirtualCam: {fileID: 864841013}
+  fakePlayer: {fileID: 8189687928320136960, guid: 30dd8fc91e2ff4945acf093c1a7c9b9b, type: 3}
 --- !u!95 &1674184193
 Animator:
   serializedVersion: 3

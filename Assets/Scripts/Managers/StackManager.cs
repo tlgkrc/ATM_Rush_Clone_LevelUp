@@ -52,8 +52,6 @@ namespace Managers
         private void SubscribeEvents()
         {
             CollectableSignals.Instance.onTouchedPlayer += OnTakeCollectableToStack;
-            // ScoreSignals.Instance.onIncreasePlayerScore += OnIncreasePlayerScore;
-            // ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
             CollectableSignals.Instance.onTouchedCollectedMoney += OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle += OnTouchedObstacle;
             CollectableSignals.Instance.onTouchedATM += OnTouchedATM;
@@ -63,8 +61,6 @@ namespace Managers
         private void UnsubscribeEvents()
         {
             CollectableSignals.Instance.onTouchedPlayer -= OnTakeCollectableToStack;
-            // ScoreSignals.Instance.onIncreasePlayerScore -= OnIncreasePlayerScore;
-            // ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
             CollectableSignals.Instance.onTouchedCollectedMoney -= OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle -= OnTouchedObstacle;
             CollectableSignals.Instance.onTouchedATM -= OnTouchedATM;
@@ -86,14 +82,12 @@ namespace Managers
         private void OnTakeCollectableToStack(GameObject _gO)
         {
             StackMoney(_gO);
-            RefreshStackList();
         }
         
         private void StackMoney(GameObject gO)
         {
             _stackMembers.Add(gO);
-            gO.transform.SetParent(transform); 
-            gO.GetComponentInChildren<Collider>().tag = "Collected";
+            gO.transform.SetParent(transform);
             RefreshStackList();
             StartCoroutine(stackAnimationController.MoneyScale(_stackMembers));
         }
@@ -110,16 +104,7 @@ namespace Managers
                     _stackMembers[i - 1].transform.localPosition + Vector3.forward;
             }
         }
-
-        // private void OnIncreasePlayerScore()
-        // {
-        //     playerStackText.text = _stackMembers.Count.ToString();
-        // }
-        //
-        // private void OnDecreasePlayerScore()
-        // {
-        //     playerStackText.text = _stackMembers.Count.ToString();
-        // }
+        
 
         private void OnTouchedCollectedMoney(GameObject gO)
         {
@@ -134,22 +119,22 @@ namespace Managers
             _stackMembers.TrimExcess();
             RefreshStackList();
             UpdateTailCondition(siblingIndex,obsPos);
-            // ScoreSignals.Instance.onDecreasePlayerScore?.Invoke();
+
         }
 
         private void UpdateTailCondition(int siblingIndex,Vector3 obstaclePos)
         {
             for (int i = siblingIndex ; i < _stackMembers.Count-1; i++)
             {
-                var newPos = new Vector3(Random.Range(-5f, 5f), 0.5f, obstaclePos.z + Random.Range(5f, 20f));
-                
+                int value = (int)_stackMembers[i].GetComponent<CollectableManager>().Data;
+                ScoreSignals.Instance.onDecreasePlayerScore(value);
                 _stackMembers[i].transform.GetChild(1).tag = "Uncollected";
+                var newPos = new Vector3(Random.Range(-5f, 5f), 0.5f, obstaclePos.z + Random.Range(5f, 20f));
                 _stackMembers[i].transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = true; 
                 _stackMembers[i].transform.SetParent(_collectables.transform);
                 _stackMembers[i].transform.DOJump(newPos, 2f, 1, .2f, false);
                 _stackMembers.RemoveAt(i);
-                _stackMembers.TrimExcess();
-                // ScoreSignals.Instance.onDecreasePlayerScore?.Invoke();
+                _stackMembers.TrimExcess(); ;
             }
         }
 

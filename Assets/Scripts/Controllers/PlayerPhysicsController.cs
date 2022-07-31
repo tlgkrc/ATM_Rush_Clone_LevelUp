@@ -6,6 +6,7 @@ using Signals;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using System;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace Controllers
 {
@@ -43,6 +44,8 @@ namespace Controllers
             {
                 CoreGameSignals.Instance.onFinishLineReached?.Invoke();
                 
+                SetTotalScore();
+
                 MiniGameSignals.Instance.onStartMiniGame?.Invoke();
             }
 
@@ -60,5 +63,9 @@ namespace Controllers
             playerManager.GetComponent<Rigidbody>().AddForce(0,0,-_playerPullBackForceData.PullBackForce,ForceMode.Impulse);
         }
 
+        private void SetTotalScore()
+        {
+            MiniGameSignals.Instance.onSetLevelScoreToMiniGame?.Invoke(playerManager.SetFinalScore());
+        }
     }
 }

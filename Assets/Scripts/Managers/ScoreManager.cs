@@ -1,4 +1,6 @@
-﻿using Signals;
+﻿using System;
+using System.Collections.Generic;
+using Signals;
 using TMPro;
 using UnityEngine;
 
@@ -10,7 +12,8 @@ namespace Managers
 
         #region Serialized Variables
 
-        [SerializeField] private TextMeshPro textAtmScore;
+        // [SerializeField] private TextMeshPro textATMScore;
+        [SerializeField] private List<TextMeshPro> textList = new List<TextMeshPro>();
 
         #endregion
 
@@ -21,6 +24,7 @@ namespace Managers
         #endregion
 
         #endregion
+        
 
         #region Subscription Events
 
@@ -51,13 +55,12 @@ namespace Managers
         private void OnIncreaseATMScore(int score)
         {
             _atmScore += score;
-            textAtmScore.text = _atmScore.ToString();
+            foreach (var textMeshPro in textList)
+            {
+                textMeshPro.text = _atmScore.ToString();
+            }
         }
-
-        // private void OnSetLevelScore()
-        // {
-        //     MiniGameSignals.Instance.onSetLevelScoreToMiniGame?.Invoke(_atmScore);
-        // }
+        
         
         // private int playerScore = 10;
         //

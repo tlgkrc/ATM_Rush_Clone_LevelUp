@@ -58,6 +58,7 @@ namespace Managers
         {
             CollectableSignals.Instance.onTouchedGate += OnTouchGate;
             CollectableSignals.Instance.onTouchedWalkingPlatform += OnTouchedWalkingPlatform;
+
         }
 
         private void UnsubscribeEvents()
