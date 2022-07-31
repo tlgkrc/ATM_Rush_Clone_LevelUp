@@ -2,6 +2,8 @@ using System;
 using Extentions;
 using Keys;
 using UnityEngine.Events;
+using Enums;
+
 
 namespace Signals
 {
@@ -18,7 +20,8 @@ namespace Signals
         public UnityAction onReset = delegate { };
         public UnityAction onFinishLineReached = delegate {  };
 
-        public UnityAction onSetCameraTarget = delegate { };
+        public UnityAction<CameraTypes> onSetCameraState = delegate { };
+        public UnityAction onSetCameraTarget = delegate {  };
 
         public Func<int> onGetLevelID = delegate { return 0; };
 

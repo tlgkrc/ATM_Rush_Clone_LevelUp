@@ -51,9 +51,9 @@ namespace Managers
                 ES3.Save("Level",dataParams.Level);
             }
 
-            if (dataParams.Money != null)
+            if (dataParams.TotalMoney != null)
             {
-                ES3.Save("Money" ,dataParams.Money);
+                ES3.Save("Money" ,dataParams.TotalMoney);
             }
         }
     }

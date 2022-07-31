@@ -32,7 +32,7 @@ namespace Controllers
             if (other.CompareTag("Player") && !CompareTag("Collected"))
             {
                CollectableSignals.Instance.onTouchedPlayer?.Invoke(collectableManager.gameObject);
-               ScoreSignals.Instance.onIncreasePlayerScore?.Invoke();
+               // ScoreSignals.Instance.onIncreasePlayerScore?.Invoke();
             }
 
             if (other.CompareTag("Obstacle"))
@@ -40,35 +40,52 @@ namespace Controllers
                 CollectableSignals.Instance.onTouchedObstacle?.Invoke(collectableManager.gameObject,other.transform.position);
             }
 
-            if (other.CompareTag("ATM") && CompareTag("Collected"))
+            if ( CompareTag("Collected"))
             {
                 var meshGO = collectableMeshFilterController.GetComponent<MeshFilter>().sharedMesh.name;
-                if (meshGO == "Money" )
+                if (other.CompareTag("ATM"))
                 {
-                    ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
-                }
-                else if(meshGO == "gold")
-                {
-                    ScoreSignals.Instance.onIncreaseATMScore?.Invoke(2);
-                }
-                else
-                {
-                    ScoreSignals.Instance.onIncreaseATMScore?.Invoke(3);
+                    if (meshGO == "Money" )
+                    {
+                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
+                    }
+                    else if(meshGO == "gold")
+                    {
+                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(2);
+                    }
+                    else
+                    {
+                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(3);
+                    }
+                    CollectableSignals.Instance.onTouchedATM?.Invoke(collectableManager.gameObject);
                 }
 
-                CollectableSignals.Instance.onTouchedATM?.Invoke(collectableManager.gameObject);
+                if (other.CompareTag("WalkingPlatform"))
+                {
+                    meshGO = collectableMeshFilterController.GetComponent<MeshFilter>().sharedMesh.name;
+                    if (meshGO == "Money" )
+                    {
+                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
+                    }
+                    else if(meshGO == "gold")
+                    {
+                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(2);
+                    }
+                    else
+                    {
+                        ScoreSignals.Instance.onIncreaseATMScore?.Invoke(3);
+                    }
+                    CollectableSignals.Instance.onTouchedWalkingPlatform?.Invoke(collectableManager.gameObject);
+                }
             }
 
             if (other.CompareTag("Collected") && CompareTag("Uncollected"))
             {
                 CollectableSignals.Instance.onTouchedCollectedMoney?.Invoke(collectableManager.gameObject);
-                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke();
+                // ScoreSignals.Instance.onIncreasePlayerScore?.Invoke();
             }
 
-            if (other.CompareTag("WalkingPlatform"))
-            {
-                CollectableSignals.Instance.onTouchedWalkingPlatform?.Invoke(collectableManager.gameObject);
-            }
+            
         }
     }
 }

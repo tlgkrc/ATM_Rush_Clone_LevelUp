@@ -1,9 +1,11 @@
-﻿using Data.ValueObject;
+﻿using System.Collections.Generic;
+using Data.ValueObject;
 using DG.Tweening;
 using Managers;
 using Signals;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using System;
 
 namespace Controllers
 {
@@ -40,6 +42,8 @@ namespace Controllers
             if (other.CompareTag("WalkingPlatform"))
             {
                 CoreGameSignals.Instance.onFinishLineReached?.Invoke();
+                
+                MiniGameSignals.Instance.onStartMiniGame?.Invoke();
             }
 
             if (other.CompareTag("ATM"))
@@ -55,5 +59,6 @@ namespace Controllers
         {
             playerManager.GetComponent<Rigidbody>().AddForce(0,0,-_playerPullBackForceData.PullBackForce,ForceMode.Impulse);
         }
+
     }
 }

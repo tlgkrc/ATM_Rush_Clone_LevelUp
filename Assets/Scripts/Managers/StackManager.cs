@@ -52,8 +52,8 @@ namespace Managers
         private void SubscribeEvents()
         {
             CollectableSignals.Instance.onTouchedPlayer += OnTakeCollectableToStack;
-            ScoreSignals.Instance.onIncreasePlayerScore += OnIncreasePlayerScore;
-            ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
+            // ScoreSignals.Instance.onIncreasePlayerScore += OnIncreasePlayerScore;
+            // ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
             CollectableSignals.Instance.onTouchedCollectedMoney += OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle += OnTouchedObstacle;
             CollectableSignals.Instance.onTouchedATM += OnTouchedATM;
@@ -63,8 +63,8 @@ namespace Managers
         private void UnsubscribeEvents()
         {
             CollectableSignals.Instance.onTouchedPlayer -= OnTakeCollectableToStack;
-            ScoreSignals.Instance.onIncreasePlayerScore -= OnIncreasePlayerScore;
-            ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
+            // ScoreSignals.Instance.onIncreasePlayerScore -= OnIncreasePlayerScore;
+            // ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
             CollectableSignals.Instance.onTouchedCollectedMoney -= OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle -= OnTouchedObstacle;
             CollectableSignals.Instance.onTouchedATM -= OnTouchedATM;
@@ -111,15 +111,15 @@ namespace Managers
             }
         }
 
-        private void OnIncreasePlayerScore()
-        {
-            playerStackText.text = _stackMembers.Count.ToString();
-        }
-
-        private void OnDecreasePlayerScore()
-        {
-            playerStackText.text = _stackMembers.Count.ToString();
-        }
+        // private void OnIncreasePlayerScore()
+        // {
+        //     playerStackText.text = _stackMembers.Count.ToString();
+        // }
+        //
+        // private void OnDecreasePlayerScore()
+        // {
+        //     playerStackText.text = _stackMembers.Count.ToString();
+        // }
 
         private void OnTouchedCollectedMoney(GameObject gO)
         {
@@ -134,7 +134,7 @@ namespace Managers
             _stackMembers.TrimExcess();
             RefreshStackList();
             UpdateTailCondition(siblingIndex,obsPos);
-            ScoreSignals.Instance.onDecreasePlayerScore?.Invoke();
+            // ScoreSignals.Instance.onDecreasePlayerScore?.Invoke();
         }
 
         private void UpdateTailCondition(int siblingIndex,Vector3 obstaclePos)
@@ -149,7 +149,7 @@ namespace Managers
                 _stackMembers[i].transform.DOJump(newPos, 2f, 1, .2f, false);
                 _stackMembers.RemoveAt(i);
                 _stackMembers.TrimExcess();
-                ScoreSignals.Instance.onDecreasePlayerScore?.Invoke();
+                // ScoreSignals.Instance.onDecreasePlayerScore?.Invoke();
             }
         }
 
@@ -169,6 +169,10 @@ namespace Managers
         {
             _stackMembers.Remove(gO);
             _stackMembers.TrimExcess();
+            if (_stackMembers.Count==0)
+            {
+                ScoreSignals.Instance.onSetLevelScore?.Invoke();
+            }
         }
     }
 }

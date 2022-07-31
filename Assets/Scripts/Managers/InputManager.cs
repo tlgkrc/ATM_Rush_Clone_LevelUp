@@ -131,7 +131,6 @@ namespace Managers
                             XValues = _moveVector.x,
                             ClampValues = new Vector2(Data.ClampSides.x, Data.ClampSides.y)
                         });
-                        
                     }
                 }
             }

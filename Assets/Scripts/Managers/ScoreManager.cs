@@ -32,11 +32,13 @@ namespace Managers
         private void SubscribeEvents()
         {
             ScoreSignals.Instance.onIncreaseATMScore += OnIncreaseATMScore;
+            // ScoreSignals.Instance.onSetLevelScore += OnSetLevelScore;
         }
 
         private void UnsubscribeEvents()
         {
             ScoreSignals.Instance.onIncreaseATMScore -= OnIncreaseATMScore;
+            // ScoreSignals.Instance.onSetLevelScore -= OnSetLevelScore;
         }
 
         private void OnDisable()
@@ -51,6 +53,11 @@ namespace Managers
             _atmScore += score;
             textAtmScore.text = _atmScore.ToString();
         }
+
+        // private void OnSetLevelScore()
+        // {
+        //     MiniGameSignals.Instance.onSetLevelScoreToMiniGame?.Invoke(_atmScore);
+        // }
         
         // private int playerScore = 10;
         //

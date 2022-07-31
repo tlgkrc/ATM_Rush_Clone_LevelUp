@@ -32,6 +32,8 @@ namespace Managers
             UISignals.Instance.onClosePanel += OnClosePanel;
             CoreGameSignals.Instance.onPlay += OnPlay;
             CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
+            CoreGameSignals.Instance.onNextLevel += OnNextLevel;
+            CoreGameSignals.Instance.onLevelInitialize += OnLevelInitialize;
         }
 
         private void UnsubscribeEvents()
@@ -40,6 +42,8 @@ namespace Managers
             UISignals.Instance.onClosePanel -= OnClosePanel;
             CoreGameSignals.Instance.onPlay -= OnPlay;
             CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
+            CoreGameSignals.Instance.onNextLevel -= OnNextLevel;
+            CoreGameSignals.Instance.onLevelInitialize -= OnLevelInitialize;
         }
         
 
@@ -75,7 +79,25 @@ namespace Managers
         public void Play()
         {
             CoreGameSignals.Instance.onPlay?.Invoke();
+            CoreGameSignals.Instance.onSetCameraTarget.Invoke();
+            CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraTypes.InitializeCam);
         }
-        
+
+        private void OnNextLevel()
+        {
+            UISignals.Instance.onClosePanel?.Invoke(UIPanels.WinPanel);
+            UISignals.Instance.onOpenPanel?.Invoke(UIPanels.StartPanel);
+        }
+
+        public void Next()
+        {
+            CoreGameSignals.Instance.onSetCameraTarget.Invoke();
+            CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraTypes.MiniGameCam);
+        }
+
+        public void OnLevelInitialize()
+        {
+            //uiPanelController.
+        }
     }
 }

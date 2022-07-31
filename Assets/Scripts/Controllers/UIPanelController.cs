@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Enums;
+using Keys;
+using TMPro;
 using UnityEngine;
 
 namespace Controllers
@@ -24,6 +26,15 @@ namespace Controllers
         public void ClosePanel(UIPanels panelParam)
         {
             panels[(int) panelParam].SetActive(false);
+        }
+
+        public void SetMoneyTextToPanel(UIPanels panelParam)
+        {
+            for (int i = 0; i < panels.Count; i++)
+            {
+                var totalMoney = panels[i].transform.GetComponentInChildren<TextMeshPro>().text;
+                //totalMoney = ES3.Load<int>("TotalMoney",(SaveGameDataParams.TotalMoney).ToString());
+            }
         }
     }
 }
