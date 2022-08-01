@@ -34,6 +34,7 @@ namespace Managers
             CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
             CoreGameSignals.Instance.onNextLevel += OnNextLevel;
             CoreGameSignals.Instance.onLevelInitialize += OnLevelInitialize;
+            CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
         }
 
         private void UnsubscribeEvents()
@@ -44,6 +45,7 @@ namespace Managers
             CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
             CoreGameSignals.Instance.onNextLevel -= OnNextLevel;
             CoreGameSignals.Instance.onLevelInitialize -= OnLevelInitialize;
+            CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
         }
         
 
@@ -63,11 +65,34 @@ namespace Managers
         {
             uiPanelController.ClosePanel(panelParam);
         }
+        
+        private void OnLevelInitialize()
+        {
+            
+        }
 
         private void OnPlay()
         {
             UISignals.Instance.onClosePanel?.Invoke(UIPanels.StartPanel);
             UISignals.Instance.onOpenPanel?.Invoke(UIPanels.LevelPanel);
+        }
+        
+        public void Play()
+        {
+            CoreGameSignals.Instance.onPlay?.Invoke();
+            CoreGameSignals.Instance.onSetCameraTarget.Invoke();
+            CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraTypes.MiniGameCam);
+        }
+        
+        private void OnRestartLevel()
+        {
+            UISignals.Instance.onOpenPanel?.Invoke(UIPanels.StartPanel);
+            UISignals.Instance.onClosePanel?.Invoke(UIPanels.LevelPanel);
+        }
+
+        public void Restart()
+        {
+            CoreGameSignals.Instance.onRestartLevel?.Invoke();
         }
 
         private void OnLevelSuccessful()
@@ -76,28 +101,22 @@ namespace Managers
             UISignals.Instance.onOpenPanel?.Invoke(UIPanels.WinPanel);
         }
 
-        public void Play()
-        {
-            CoreGameSignals.Instance.onPlay?.Invoke();
-            CoreGameSignals.Instance.onSetCameraTarget.Invoke();
-            CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraTypes.InitializeCam);
-        }
+        
 
         private void OnNextLevel()
         {
             UISignals.Instance.onClosePanel?.Invoke(UIPanels.WinPanel);
-            UISignals.Instance.onOpenPanel?.Invoke(UIPanels.StartPanel);
+            UISignals.Instance.onOpenPanel?.Invoke(UIPanels.LevelPanel);
         }
 
         public void Next()
         {
-            CoreGameSignals.Instance.onSetCameraTarget.Invoke();
+            CoreGameSignals.Instance.onNextLevel?.Invoke();
             CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraTypes.MiniGameCam);
         }
 
-        public void OnLevelInitialize()
-        {
-            //uiPanelController.
-        }
+        
+
+        
     }
 }

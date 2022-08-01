@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CD_MiniGame
   m_EditorClassIdentifier: 
   miniGameData:
-    cubeScale: {x: 6, y: 4, z: 2}
+    cubeScale: {x: 9, y: 4, z: 2}
     cubePrefab: {fileID: 5740106483462782262, guid: 49fb44390eaaaee419e21d89f55a454e, type: 3}
     cubeScaleFactor: 10
     indexMaxFactor: 100

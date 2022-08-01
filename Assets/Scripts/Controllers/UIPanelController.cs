@@ -27,14 +27,5 @@ namespace Controllers
         {
             panels[(int) panelParam].SetActive(false);
         }
-
-        public void SetMoneyTextToPanel(UIPanels panelParam)
-        {
-            for (int i = 0; i < panels.Count; i++)
-            {
-                var totalMoney = panels[i].transform.GetComponentInChildren<TextMeshPro>().text;
-                //totalMoney = ES3.Load<int>("TotalMoney",(SaveGameDataParams.TotalMoney).ToString());
-            }
-        }
     }
 }

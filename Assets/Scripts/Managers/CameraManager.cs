@@ -13,8 +13,7 @@ namespace Managers
 
         #region Serialized Variables
 
-        [SerializeField] CinemachineVirtualCamera cmVirtualCam;
-        [SerializeField] private Transform fakePlayer;
+        [SerializeField] CinemachineVirtualCamera runnerVirtualCam,miniGameCam;
 
         #endregion
 
@@ -48,6 +47,7 @@ namespace Managers
             CoreGameSignals.Instance.onReset += OnReset;
             CoreGameSignals.Instance.onSetCameraTarget += OnSetCameraTarget;
             CoreGameSignals.Instance.onFinishLineReached += OnStartMiniGameCam;
+            MiniGameSignals.Instance.onSetCameraTargetFakePlayer += OnSetCameraTargetFakePlayer;
         }
         
         private void UnsubscribeEvents()
@@ -56,6 +56,7 @@ namespace Managers
             CoreGameSignals.Instance.onReset -= OnReset;
             CoreGameSignals.Instance.onSetCameraTarget -= OnSetCameraTarget;
             CoreGameSignals.Instance.onFinishLineReached -= OnStartMiniGameCam;
+            MiniGameSignals.Instance.onSetCameraTargetFakePlayer -= OnSetCameraTargetFakePlayer;
         }
         
         private void OnDisable()
@@ -79,13 +80,13 @@ namespace Managers
         private void OnSetCameraTarget()
         {       
             var playerManager = FindObjectOfType<PlayerManager>().transform;
-            cmVirtualCam.Follow = playerManager;
+            runnerVirtualCam.Follow = playerManager;
         }
         
         private void OnReset()
         {
-            cmVirtualCam.LookAt = null;
-            cmVirtualCam.Follow = null;
+            runnerVirtualCam.LookAt = null;
+            runnerVirtualCam.Follow = null;
             OnMoveToInitialPosition();
         }
         
@@ -117,12 +118,11 @@ namespace Managers
         private void OnStartMiniGameCam()
         {
             OnSetCameraState(CameraTypes.RunnerCam);
-            SetMiniGameCameraTarget();
         }
 
-        private void SetMiniGameCameraTarget()
+        private void OnSetCameraTargetFakePlayer(GameObject fakePlayer)
         {
-            cmVirtualCam.Follow = fakePlayer;
+            miniGameCam.Follow =fakePlayer.transform;
         }
     }
 }

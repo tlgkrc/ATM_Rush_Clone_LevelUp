@@ -2357,8 +2357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84e58d78b504644befb9f126e125ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cmVirtualCam: {fileID: 864841013}
-  fakePlayer: {fileID: 8189687928320136960, guid: 30dd8fc91e2ff4945acf093c1a7c9b9b, type: 3}
+  runnerVirtualCam: {fileID: 864841013}
+  miniGameCam: {fileID: 704739112}
 --- !u!95 &1674184193
 Animator:
   serializedVersion: 3
@@ -2727,7 +2727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_FollowOffset: {x: 0, y: 21.5, z: 15.600006}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -2959,7 +2959,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2035354905}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1731093505}
+        m_TargetAssemblyTypeName: Managers.UIManager, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2035354905
 MonoBehaviour:
   m_ObjectHideFlags: 0

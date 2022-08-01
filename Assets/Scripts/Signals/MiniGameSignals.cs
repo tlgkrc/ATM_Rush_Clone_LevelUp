@@ -8,5 +8,7 @@ namespace Signals
     {
         public UnityAction<int> onSetLevelScoreToMiniGame = delegate {  };
         public UnityAction onStartMiniGame =delegate {  };
+        public UnityAction<GameObject> onSetCameraTargetFakePlayer = delegate {  };
+
     }
 }

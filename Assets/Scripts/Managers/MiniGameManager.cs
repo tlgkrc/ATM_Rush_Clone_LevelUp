@@ -62,7 +62,6 @@ namespace Managers
         {
             data = GetLetterPathData();
             _levelCollactableCount = FindObjectsOfType<CollectableManager>().Length;
-
         }
 
         private void Start()
@@ -226,21 +225,20 @@ namespace Managers
         private void StartMiniGameAnim()
         {
             var position = targetTransform.position;
-            Vector3 newPos = new Vector3(position.x, position.y , position.z-data.cubeScale.z);
+            Vector3 newPos = new Vector3(position.x, position.y , position.z-data.cubeScale.z*1.5f);
             Instantiate(fakePlayer);
             fakePlayer.transform.position = newPos;
             MoveFakePlayerLastPos(fakePlayer);
         }
-
+        
         private void MoveFakePlayerLastPos(GameObject fPlayer)
         {
-            //var fakePlayerPos = (_levelScore / data.maxMoneyValue) * data.cubeScale.y;
-            //fPlayer.transform.DOMoveY(fakePlayerPos, 5, false).SetEase(Ease.Linear);
-
+            MiniGameSignals.Instance.onSetCameraTargetFakePlayer?.Invoke(fakePlayer);
+            //multiplied by 2 bcs every money cannot be diamond
+            var fakePlayerPos = (_levelScore / data.maxMoneyValue) * data.cubeScale.y * 2;
+            fPlayer.transform.DOMoveY(fakePlayerPos, 10, false)
+                .OnComplete(() => CoreGameSignals.Instance.onLevelSuccessful?.Invoke());
         }
-
-        
-
     }
 
 }
