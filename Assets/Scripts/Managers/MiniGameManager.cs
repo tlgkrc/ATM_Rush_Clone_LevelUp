@@ -20,8 +20,6 @@ namespace Managers
 
         public Transform targetTransform;
 
-        public Transform levelCollactableHolder; // Level
-
         #endregion
 
         #region Serialized Variables
@@ -91,12 +89,16 @@ namespace Managers
         {
             MiniGameSignals.Instance.onSetLevelScoreToMiniGame += OnSetLevelScoreToMiniGame;
             MiniGameSignals.Instance.onStartMiniGame += OnStartMiniGame;
+            CoreGameSignals.Instance.onNextLevel += OnNextLevel;
+            CoreGameSignals.Instance.onReset += OnReset;
         }
 
         private void UnsubscribeEvents()
         {
             MiniGameSignals.Instance.onSetLevelScoreToMiniGame -= OnSetLevelScoreToMiniGame;
             MiniGameSignals.Instance.onStartMiniGame -= OnStartMiniGame;
+            CoreGameSignals.Instance.onNextLevel -= OnNextLevel;
+            CoreGameSignals.Instance.onReset -= OnReset;
         }
 
         #endregion
@@ -110,7 +112,7 @@ namespace Managers
 
         private int SetPredictedCubeCount() // Set cube count base level
         {
-            return predictedCubeCount = (_levelCollactableCount * mostValuableObjectValue);
+            return predictedCubeCount;
         }
 
         private void SetCubesToScene(int cubeCount)
@@ -159,7 +161,6 @@ namespace Managers
             if (_backgroundAxis == MiniGameState.Vertical)
             {
                 gO.transform.GetChild(0).gameObject.SetActive(true);
-
                 gO.transform.GetChild(0).GetComponentInChildren<TextMeshPro>().text =(value+1).ToString() + "x";
             }
             else
@@ -226,18 +227,34 @@ namespace Managers
         {
             var position = targetTransform.position;
             Vector3 newPos = new Vector3(position.x, position.y , position.z-data.cubeScale.z*1.5f);
-            Instantiate(fakePlayer);
-            fakePlayer.transform.position = newPos;
-            MoveFakePlayerLastPos(fakePlayer);
+            fakePlayer.SetActive(transform);
+            // fakePlayer.transform.position = newPos;
+            MoveFakePlayerLastPos(fakePlayer,newPos);
         }
         
-        private void MoveFakePlayerLastPos(GameObject fPlayer)
+        private void MoveFakePlayerLastPos(GameObject fPlayer,Vector3 movedPos)
         {
             MiniGameSignals.Instance.onSetCameraTargetFakePlayer?.Invoke(fakePlayer);
             //multiplied by 2 bcs every money cannot be diamond
             var fakePlayerPos = (_levelScore / data.maxMoneyValue) * data.cubeScale.y * 2;
-            fPlayer.transform.DOMoveY(fakePlayerPos, 10, false)
+            fPlayer.transform.DOMoveY(movedPos.y + fakePlayerPos, 10, false)
                 .OnComplete(() => CoreGameSignals.Instance.onLevelSuccessful?.Invoke());
+        }
+
+        private void OnNextLevel()
+        {
+            SetDefaultValueToMiniGame();            
+        }
+
+        private void OnReset()
+        {
+            SetDefaultValueToMiniGame();
+        }
+        private void SetDefaultValueToMiniGame()
+        {
+            fakePlayer.transform.localPosition =new Vector3(0,-2,-13);
+            fakePlayer.SetActive(false);
+            OnLoadTower(backgroundAxis);
         }
     }
 

@@ -49,39 +49,12 @@ namespace Controllers
                 {
                     IncreaseAtmScore(meshGO);
                     CollectableSignals.Instance.onTouchedATM?.Invoke(collectableManager.gameObject);
-                    // if (meshGO == "Money" )
-                    // {
-                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
-                    // }
-                    // else if(meshGO == "gold")
-                    // {
-                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(2);
-                    // }
-                    // else
-                    // {
-                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(3);
-                    // }
-                    // CollectableSignals.Instance.onTouchedATM?.Invoke(collectableManager.gameObject);
                 }
 
                 if (other.CompareTag("WalkingPlatform"))
                 {
-                    // meshGO = collectableMeshFilterController.GetComponent<MeshFilter>().sharedMesh.name;
                     IncreaseAtmScore(meshGO);
                     CollectableSignals.Instance.onTouchedWalkingPlatform?.Invoke(collectableManager.gameObject);
-                    // if (meshGO == "Money" )
-                    // {
-                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
-                    // }
-                    // else if(meshGO == "gold")
-                    // {
-                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(2);
-                    // }
-                    // else
-                    // {
-                    //     ScoreSignals.Instance.onIncreaseATMScore?.Invoke(3);
-                    // }
-                    
                 }
             }
 

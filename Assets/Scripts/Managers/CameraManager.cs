@@ -48,6 +48,8 @@ namespace Managers
             CoreGameSignals.Instance.onSetCameraTarget += OnSetCameraTarget;
             CoreGameSignals.Instance.onFinishLineReached += OnStartMiniGameCam;
             MiniGameSignals.Instance.onSetCameraTargetFakePlayer += OnSetCameraTargetFakePlayer;
+            CoreGameSignals.Instance.onNextLevel += OnNextLevel;
+            CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
         }
         
         private void UnsubscribeEvents()
@@ -57,6 +59,8 @@ namespace Managers
             CoreGameSignals.Instance.onSetCameraTarget -= OnSetCameraTarget;
             CoreGameSignals.Instance.onFinishLineReached -= OnStartMiniGameCam;
             MiniGameSignals.Instance.onSetCameraTargetFakePlayer -= OnSetCameraTargetFakePlayer;
+            CoreGameSignals.Instance.onNextLevel -= OnNextLevel;
+            CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
         }
         
         private void OnDisable()
@@ -87,6 +91,11 @@ namespace Managers
         {
             runnerVirtualCam.LookAt = null;
             runnerVirtualCam.Follow = null;
+            runnerVirtualCam.transform.position = new Vector3(0, 24, 3);
+            
+            runnerVirtualCam.LookAt = null;
+            runnerVirtualCam.Follow = null;
+            miniGameCam.transform.position = new Vector3(0, 9.60000038f, 210.100006f);
             OnMoveToInitialPosition();
         }
         
@@ -123,6 +132,18 @@ namespace Managers
         private void OnSetCameraTargetFakePlayer(GameObject fakePlayer)
         {
             miniGameCam.Follow =fakePlayer.transform;
+        }
+
+        private void OnNextLevel()
+        {
+            OnSetCameraState(CameraTypes.MiniGameCam);
+            OnSetCameraTarget();
+        }
+
+        private void OnRestartLevel()
+        {
+            OnSetCameraState(CameraTypes.InitializeCam);
+            OnSetCameraTarget();
         }
     }
 }

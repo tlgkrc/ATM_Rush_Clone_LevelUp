@@ -116,6 +116,7 @@ namespace Managers
                 Level = _levelID
             });
             CoreGameSignals.Instance.onLevelInitialize?.Invoke();
+            UISignals.Instance.onChangeLevelText?.Invoke(_levelID);
             
         }
 
