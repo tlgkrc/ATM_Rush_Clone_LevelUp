@@ -81,7 +81,7 @@ namespace Managers
         {
             CoreGameSignals.Instance.onPlay?.Invoke();
             CoreGameSignals.Instance.onSetCameraTarget.Invoke();
-            CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraTypes.MiniGameCam);
+            CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraTypes.InitializeCam);
         }
         
         private void OnRestartLevel()

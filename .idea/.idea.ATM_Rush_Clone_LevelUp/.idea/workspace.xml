@@ -2,17 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac90f9b8-b136-4f75-8f67-791274896415" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/WalkingPlatformMeshController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/WalkingPlatformMeshController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ATM_Rush_Clone_LevelUp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ATM_Rush_Clone_LevelUp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other/ATM RUSH Sahne.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other/ATM RUSH Sahne.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other/Walking_Platform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other/Walking_Platform.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other/Walking_Platform.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other/Walking_Platform.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Ground.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ATM 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ATM 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ATM 1.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ATM 1.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bank.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bank.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BarbedObstacle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BarbedObstacle.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FakePlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FakePlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MiniGameCube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MiniGameCube.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/CD_MiniGame.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/CD_MiniGame.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FixedObs.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FixedObs.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FixedObstacle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FixedObstacle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HandObs.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HandObs.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LastATM.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LastATM.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LastATM.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LastATM.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MoneyManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MoneyManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PlayerManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Portal.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Portal.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Sarkaç.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Sarkaç.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SpinningObs.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SpinningObs.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SwimgingObs.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SwimgingObs.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WalkingPlatform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/WalkingPlatform.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WalkingPlatform.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/WalkingPlatform.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 0.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 0.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 0.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 1.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 1.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/UIPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/UIPanelController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/CameraManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/CameraManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/MiniGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/MiniGameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Signals/MiniGameSignals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Signals/MiniGameSignals.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +119,7 @@
       <workItem from="1659114242051" duration="5565000" />
       <workItem from="1659124790047" duration="2046000" />
       <workItem from="1659168943133" duration="37095000" />
-      <workItem from="1659262961196" duration="41051000" />
+      <workItem from="1659262961196" duration="44913000" />
     </task>
     <servers />
   </component>
