@@ -26,87 +26,69 @@ namespace Controllers
         {
             if (other.CompareTag("Portal"))
             {
-                CollectableSignals.Instance.onTouchedGate?.Invoke(collectableManager.gameObject.GetInstanceID());
+                CollectableSignals.Instance.onTouchedGate?.Invoke(collectableManager.gameObject);
             }
 
             if (other.CompareTag("Player") && !CompareTag("Collected"))
             {
-               CollectableSignals.Instance.onTouchedPlayer?.Invoke(collectableManager.gameObject); 
+               CollectableSignals.Instance.onAddStackList?.Invoke(collectableManager.gameObject);
+               SetPlayerScoreSignal(collectableManager.gameObject,1);
                tag = "Collected";
-               IncreasePlayerScore(transform.parent.gameObject);
             }
 
             if (other.CompareTag("Obstacle"))
             {
                 CollectableSignals.Instance.onTouchedObstacle?.Invoke(collectableManager.gameObject,other.transform.position);
-                DecreasePlayerScore(transform.parent.gameObject);
+                SetPlayerScoreSignal(collectableManager.gameObject,-1);
             }
 
             if ( CompareTag("Collected"))
             {
-                var meshGO = collectableMeshFilterController.GetComponent<MeshFilter>().sharedMesh.name;
                 if (other.CompareTag("ATM"))
                 {
-                    IncreaseAtmScore(meshGO);
+                    SetAtmScoreSignal(collectableManager.gameObject);
                     CollectableSignals.Instance.onTouchedATM?.Invoke(collectableManager.gameObject);
                 }
 
                 if (other.CompareTag("WalkingPlatform"))
                 {
-                    IncreaseAtmScore(meshGO);
+                    SetAtmScoreSignal(collectableManager.gameObject);
                     CollectableSignals.Instance.onTouchedWalkingPlatform?.Invoke(collectableManager.gameObject);
                 }
             }
-
             if (other.CompareTag("Collected") && CompareTag("Uncollected"))
             {
                 CollectableSignals.Instance.onTouchedCollectedMoney?.Invoke(collectableManager.gameObject);
                 tag = "Collected";
-                IncreasePlayerScore(transform.parent.gameObject);
+                SetPlayerScoreSignal(collectableManager.gameObject,1);
             }
         }
 
-        private void IncreasePlayerScore(GameObject gO)
+        private void SetPlayerScoreSignal(GameObject gO,int changeFactor)
         {
             var state = gO.GetComponent<CollectableManager>().Data;
             if (state == CollectableTypes.Money)
             {
-                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke(1);
+                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke(1*changeFactor);
             }
             else if(state == CollectableTypes.Gold)
             {
-                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke((2));
+                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke((2*changeFactor));
             }
             else
             {
-                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke((2));
+                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke((3*changeFactor));
             }
         }
-
-        private void DecreasePlayerScore(GameObject gO)
+        
+        private void SetAtmScoreSignal(GameObject gO)
         {
             var state = gO.GetComponent<CollectableManager>().Data;
             if (state == CollectableTypes.Money)
-            {
-                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke(-1);
-            }
-            else if(state == CollectableTypes.Gold)
-            {
-                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke(-2);
-            }
-            else
-            {
-                ScoreSignals.Instance.onIncreasePlayerScore?.Invoke(-3);
-            }
-        }
-
-        private void IncreaseAtmScore(String meshGO)
-        {
-            if (meshGO == "Money" )
             {
                 ScoreSignals.Instance.onIncreaseATMScore?.Invoke(1);
             }
-            else if(meshGO == "gold")
+            else if(state == CollectableTypes.Gold)
             {
                 ScoreSignals.Instance.onIncreaseATMScore?.Invoke(2);
             }

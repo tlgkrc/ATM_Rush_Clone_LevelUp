@@ -158,6 +158,5 @@ namespace Managers
         {
             _playerScore = levelScore;
         }
-        
     }
 }

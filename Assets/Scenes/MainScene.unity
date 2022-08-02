@@ -703,8 +703,8 @@ Transform:
   - {fileID: 290099599}
   - {fileID: 1267613339}
   - {fileID: 1608661788}
-  - {fileID: 657592436}
   - {fileID: 1674184195}
+  - {fileID: 657592436}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -831,7 +831,7 @@ Transform:
   m_Children:
   - {fileID: 202536137}
   m_Father: {fileID: 546441515}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &678507829
 GameObject:
@@ -2384,7 +2384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data:
-    TotalObjectCount: 10
+    gO: {fileID: 0}
   levelHolder: {fileID: 657592435}
   levelLoader: {fileID: 1608661790}
   levelClearer: {fileID: 1608661789}
@@ -2483,7 +2483,7 @@ MonoBehaviour:
     m_MinDuration: 0
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 0.75
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -2513,7 +2513,7 @@ Transform:
   - {fileID: 864841012}
   - {fileID: 704739111}
   m_Father: {fileID: 546441515}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1674184196
 MonoBehaviour:

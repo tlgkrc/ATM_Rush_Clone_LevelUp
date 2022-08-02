@@ -74,9 +74,9 @@ namespace Managers
 
         #endregion
 
-        private void OnTouchGate(int instanceId)
+        private void OnTouchGate(GameObject gO)
         {
-            meshFilterController.UpdateMeshFilterCollectable(Data, instanceId);
+            meshFilterController.UpdateMeshFilterCollectable(Data, gO);
         }
 
         private void OnTouchedWalkingPlatform(GameObject _gO)

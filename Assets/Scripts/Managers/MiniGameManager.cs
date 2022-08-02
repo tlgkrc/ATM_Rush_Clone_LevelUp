@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -28,45 +27,42 @@ namespace Managers
 
         [SerializeField] private int predictedCubeCount;
 
-
+        [SerializeField] private int mostValuableObjectValue = 3; 
+        
+        [SerializeField] private GameObject fakePlayer;
         #endregion
 
         #region Private Variables
 
-        private MiniGameData data;
+        private MiniGameData _data;
 
-        private float colorValue;
+        private float _colorValue;
 
         private int _indexMinFactor;
 
         private Vector3 forwardStack;
 
         private Vector3 upwardsStack;
+        
+        private int _levelCollactableCount;
 
         private int _levelScore;
 
         #endregion
 
         #endregion
-        
-        private int _levelCollactableCount;
-
-        [SerializeField] private int mostValuableObjectValue = 3;
-        [SerializeField] private GameObject fakePlayer;
-        
-
 
         private void Awake()
         {
-            data = GetLetterPathData();
+            _data = GetLetterPathData();
             _levelCollactableCount = FindObjectsOfType<CollectableManager>().Length;
         }
 
         private void Start()
         {
-            data.cubePrefab.transform.localScale = data.cubeScale;
+            _data.cubePrefab.transform.localScale = _data.cubeScale;
 
-            targetTransform.position = new Vector3(0, data.cubePrefab.transform.localScale.y / 2, targetTransform.position.z);
+            targetTransform.position = new Vector3(0, _data.cubePrefab.transform.localScale.y / 2, targetTransform.position.z);
 
             SetCubesToScene(SetPredictedCubeCount());
 
@@ -114,20 +110,20 @@ namespace Managers
         {
             for (int i = 0; i < cubeCount; i++)
             {
-                cubeList.Add(Instantiate(data.cubePrefab, targetTransform));
+                cubeList.Add(Instantiate(_data.cubePrefab, targetTransform));
                 SetColor(cubeList[i]);
             }
         }
         private void SetColor(GameObject gO)
         {
-            colorValue += 0.05f;
+            _colorValue += 0.05f;
 
-            if (colorValue >= 0.9f)
+            if (_colorValue >= 0.9f)
             {
-                colorValue = 0;
+                _colorValue = 0;
             }
 
-            gO.GetComponent<Renderer>().material.color = Color.HSVToRGB(colorValue, 1, 1);
+            gO.GetComponent<Renderer>().material.color = Color.HSVToRGB(_colorValue, 1, 1);
         }
         private void SetTowerCollider(MiniGameState _backgroundAxis, GameObject gO)
         {
@@ -135,18 +131,18 @@ namespace Managers
 
             if (_backgroundAxis == MiniGameState.Vertical)
             {
-                cubeCollider.center = new Vector3(0, 0, -data.colliderCenter);
-                cubeCollider.size = new Vector3(1, 1, data.colliderSize);
+                cubeCollider.center = new Vector3(0, 0, -_data.colliderCenter);
+                cubeCollider.size = new Vector3(1, 1, _data.colliderSize);
             }
             else
             {
-                cubeCollider.center = new Vector3(0, data.colliderCenter, 0);
-                cubeCollider.size = new Vector3(1, data.colliderSize, 1);
+                cubeCollider.center = new Vector3(0, _data.colliderCenter, 0);
+                cubeCollider.size = new Vector3(1, _data.colliderSize, 1);
             }
         }
         private void SetTextOnCubes(GameObject gO, MiniGameState _backgroundAxis)
         {
-            if (_indexMinFactor >= data.indexMaxFactor-1)
+            if (_indexMinFactor >= _data.indexMaxFactor-1)
             {
                 _indexMinFactor = 0;
                 return;
@@ -218,10 +214,12 @@ namespace Managers
             StartMiniGameAnim();
         }
         
+        //!!!Solid
+        
         private void StartMiniGameAnim()
         {
             var position = targetTransform.position;
-            Vector3 newPos = new Vector3(position.x, position.y , position.z-data.cubeScale.z*1.5f);
+            Vector3 newPos = new Vector3(position.x, position.y , position.z-_data.cubeScale.z*1.5f);
             fakePlayer.SetActive(transform);
             MoveFakePlayerLastPos(fakePlayer,newPos);
         }
@@ -230,8 +228,8 @@ namespace Managers
         {
             MiniGameSignals.Instance.onSetCameraTargetFakePlayer?.Invoke(fakePlayer);
             //multiplied by 2 bcs every money cannot be diamond
-            var fakePlayerPos = (_levelScore / data.maxMoneyValue) * data.cubeScale.y * 2;
-            MiniGameSignals.Instance.onSetMoneyFactor?.Invoke(((float)_levelScore/(data.maxMoneyValue*5)+ 1));
+            var fakePlayerPos = (_levelScore / _data.maxMoneyValue) * _data.cubeScale.y * 2;
+            MiniGameSignals.Instance.onSetMoneyFactor?.Invoke(((float)_levelScore/(_data.maxMoneyValue*5)+ 1));
             fPlayer.transform.DOMoveY(movedPos.y + fakePlayerPos, 10, false)
                 .OnComplete(() => CoreGameSignals.Instance.onLevelSuccessful?.Invoke());
             
@@ -255,5 +253,4 @@ namespace Managers
             cubeList.TrimExcess();
         }
     }
-
 }

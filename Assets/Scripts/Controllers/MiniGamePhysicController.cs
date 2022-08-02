@@ -17,7 +17,7 @@ namespace Controllers
 
         #endregion
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other) //!!!!check with tag
         {
             var newPos = other.transform.localPosition.z;
             other.transform.DOLocalMoveZ(newPos - 6, .2f, false);

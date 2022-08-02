@@ -51,7 +51,7 @@ namespace Managers
 
         private void SubscribeEvents()
         {
-            CollectableSignals.Instance.onTouchedPlayer += OnTakeCollectableToStack;
+            CollectableSignals.Instance.onAddStackList += OnTakeCollectableToStack;
             CollectableSignals.Instance.onTouchedCollectedMoney += OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle += OnTouchedObstacle;
             CollectableSignals.Instance.onTouchedATM += OnTouchedATM;
@@ -60,7 +60,7 @@ namespace Managers
 
         private void UnsubscribeEvents()
         {
-            CollectableSignals.Instance.onTouchedPlayer -= OnTakeCollectableToStack;
+            CollectableSignals.Instance.onAddStackList -= OnTakeCollectableToStack;
             CollectableSignals.Instance.onTouchedCollectedMoney -= OnTouchedCollectedMoney;
             CollectableSignals.Instance.onTouchedObstacle -= OnTouchedObstacle;
             CollectableSignals.Instance.onTouchedATM -= OnTouchedATM;

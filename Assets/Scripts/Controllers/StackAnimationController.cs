@@ -26,14 +26,14 @@ namespace Controllers
         
         public IEnumerator MoneyScale(List<GameObject> newList) 
         {
-            var increasedScale = Vector3.one*1.3f ;
+            var increasedScale = Vector3.one*1.7f ;
             for (int i = 0 ; i <= newList.Count-1 ; i++)
             {
                 var index = (newList.Count -1) - i;
 
-                newList[index].transform.DOScale(increasedScale, 0.14f).SetEase(Ease.Flash); 
-                newList[index].transform.DOScale(Vector3.one, .14f ).SetEase(Ease.Flash).SetDelay(.14f); 
-                yield return new WaitForSeconds(0.3f);
+                newList[index].transform.DOScale(increasedScale, 0.1f).SetEase(Ease.Flash); 
+                newList[index].transform.DOScale(Vector3.one, .1f ).SetEase(Ease.Flash).SetDelay(.1f); 
+                yield return new WaitForSeconds(0.05f);
             }
         }
     }

@@ -10,10 +10,6 @@ namespace Controllers
     {
         #region Self Variables
 
-        #region Public Variables
-
-        #endregion
-
         #region Serialized Variables
             
         [SerializeField] private CollectableManager collectableManager;
@@ -22,18 +18,13 @@ namespace Controllers
 
         #endregion
 
-        #region Private Variables
-
-        #endregion
-
         #endregion
         
 
-        public void UpdateMeshFilterCollectable(CollectableTypes colTypes,int id)
+        public void UpdateMeshFilterCollectable(CollectableTypes colTypes,GameObject _gO)
         {
-            if (transform.parent.gameObject.GetInstanceID() == id)
+            if (collectableManager.gameObject == _gO)
             {
-                int indexOfMesh =(int)colTypes;
                 if (colTypes == CollectableTypes.Money)
                 {
                     collectableManager.Data = CollectableTypes.Gold;
@@ -45,7 +36,6 @@ namespace Controllers
                     gameObject.GetComponent<MeshFilter>().sharedMesh = meshFilters[2].sharedMesh;
                 }
                 ScoreSignals.Instance.onIncreasePlayerScore?.Invoke(1);
-                
             }
         }
 
