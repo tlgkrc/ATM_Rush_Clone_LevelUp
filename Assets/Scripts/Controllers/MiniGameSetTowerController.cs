@@ -1,25 +1,24 @@
-using System;
 using System.Collections.Generic;
-using DG.Tweening;
-using Signals;
+using Data.ValueObject;
+using Enums;
+using Managers;
+using TMPro;
 using UnityEngine;
 
 namespace Controllers
 {
-    public class StackPhysicsController : MonoBehaviour
+    public class MiniGameSetTowerController : MonoBehaviour
     {
         #region Self Variables
-        
+
         #region Serialized Variables
 
+        [SerializeField] private MiniGameManager manager;
+
         #endregion
-        
-        #region Private Variables
-        
+
         #endregion
-        
-        #endregion
+
         
     }
 }
-

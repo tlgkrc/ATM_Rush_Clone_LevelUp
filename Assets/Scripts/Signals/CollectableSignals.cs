@@ -8,10 +8,9 @@ namespace Signals
     public class CollectableSignals : MonoSingleton<CollectableSignals>
     {
         public UnityAction<GameObject> onAddStackList = delegate {  };
-        public UnityAction<GameObject> onTouchedGate = delegate {  };
-        public UnityAction<GameObject> onTouchedCollectedMoney = delegate {  };
-        public UnityAction<GameObject,Vector3> onTouchedObstacle = delegate { };
-        public UnityAction<GameObject> onTouchedWalkingPlatform = delegate {  };
-        public UnityAction<GameObject> onTouchedATM = delegate {  };
+        public UnityAction<GameObject> onCollideGate = delegate {  };
+        public UnityAction<GameObject,Vector3> onCollideObstacle = delegate { };
+        public UnityAction<GameObject> onCollideWalkingPlatform = delegate {  };
+        public UnityAction<GameObject> onCollideATM = delegate {  };
     }
 }

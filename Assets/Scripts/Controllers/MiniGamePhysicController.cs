@@ -17,16 +17,24 @@ namespace Controllers
 
         #endregion
 
-        private void OnTriggerEnter(Collider other) //!!!!check with tag
+        private void OnTriggerEnter(Collider other) 
         {
-            var newPos = other.transform.localPosition.z;
-            other.transform.DOLocalMoveZ(newPos - 6, .2f, false);
+            if (other.CompareTag("Tower"))
+            {
+                var newPos = other.transform.localPosition.z;
+                other.transform.DOLocalMoveZ(newPos - 6, .2f, false);
+            }
+            
         }
 
         private void OnTriggerExit(Collider other)
         {
-            var newPos = other.transform.localPosition.z;
-            other.transform.DOLocalMoveZ(newPos + 6 , .2f, false);
+            if (other.CompareTag("Tower"))
+            {
+                var newPos = other.transform.localPosition.z;
+                other.transform.DOLocalMoveZ(newPos + 6 , .2f, false);
+            }
+            
         }
     }
 }

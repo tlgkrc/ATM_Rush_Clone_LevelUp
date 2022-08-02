@@ -10,9 +10,7 @@ namespace Controllers
         #region Self Variables
         
         #region Serialized Variables
-
-        [SerializeField] private StackAnimationController animationController;
-        [SerializeField] private StackPhysicsController physicsController;
+        
         [SerializeField] private StackManager manager;
 
         #endregion

@@ -56,22 +56,22 @@ namespace Managers
 
         private void SubscribeEvents()
         {
-            CollectableSignals.Instance.onTouchedGate += OnTouchGate;
-            CollectableSignals.Instance.onTouchedWalkingPlatform += OnTouchedWalkingPlatform;
+            CollectableSignals.Instance.onCollideGate += OnTouchGate;
+            CollectableSignals.Instance.onCollideWalkingPlatform += OnTouchedWalkingPlatform;
 
         }
 
         private void UnsubscribeEvents()
         {
-            CollectableSignals.Instance.onTouchedGate -= OnTouchGate;
-            CollectableSignals.Instance.onTouchedWalkingPlatform += OnTouchedWalkingPlatform;
+            CollectableSignals.Instance.onCollideGate -= OnTouchGate;
+            CollectableSignals.Instance.onCollideWalkingPlatform += OnTouchedWalkingPlatform;
         }
 
         private void OnDisable()
         {
             UnsubscribeEvents();
         }
-
+        
         #endregion
 
         private void OnTouchGate(GameObject gO)

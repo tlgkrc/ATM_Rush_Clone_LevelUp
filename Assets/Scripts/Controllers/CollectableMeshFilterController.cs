@@ -13,7 +13,6 @@ namespace Controllers
         #region Serialized Variables
             
         [SerializeField] private CollectableManager collectableManager;
-        [SerializeField] private CollectablePhysicsController collectablePhysicsController;
         [SerializeField] private List<MeshFilter> meshFilters = new List<MeshFilter>();
 
         #endregion

@@ -6,15 +6,6 @@ namespace Controllers
 {
     public class CollectableMovementController : MonoBehaviour
     {
-        #region Self Region
-
-        #region Serialized Region
-
-        [SerializeField] private CollectableManager collectableManager;
-
-        #endregion
-
-        #endregion
         public void MoveOnWalkingPlatform(GameObject gO)
         {
             gO.transform.SetParent(null);

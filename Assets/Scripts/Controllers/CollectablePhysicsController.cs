@@ -1,5 +1,4 @@
-﻿using System;
-using Enums;
+﻿using Enums;
 using Managers;
 using Signals;
 using UnityEngine;
@@ -13,10 +12,6 @@ namespace Controllers
         #region Serialized Variables
 
         [SerializeField] private CollectableManager collectableManager;
-        [SerializeField] private CollectableMeshFilterController collectableMeshFilterController;
-        #endregion
-
-        #region Private Variables
         
         #endregion
 
@@ -26,7 +21,7 @@ namespace Controllers
         {
             if (other.CompareTag("Portal"))
             {
-                CollectableSignals.Instance.onTouchedGate?.Invoke(collectableManager.gameObject);
+                CollectableSignals.Instance.onCollideGate?.Invoke(collectableManager.gameObject);
             }
 
             if (other.CompareTag("Player") && !CompareTag("Collected"))
@@ -38,7 +33,7 @@ namespace Controllers
 
             if (other.CompareTag("Obstacle"))
             {
-                CollectableSignals.Instance.onTouchedObstacle?.Invoke(collectableManager.gameObject,other.transform.position);
+                CollectableSignals.Instance.onCollideObstacle?.Invoke(collectableManager.gameObject,other.transform.position);
                 SetPlayerScoreSignal(collectableManager.gameObject,-1);
             }
 
@@ -47,18 +42,18 @@ namespace Controllers
                 if (other.CompareTag("ATM"))
                 {
                     SetAtmScoreSignal(collectableManager.gameObject);
-                    CollectableSignals.Instance.onTouchedATM?.Invoke(collectableManager.gameObject);
+                    CollectableSignals.Instance.onCollideATM?.Invoke(collectableManager.gameObject);
                 }
 
                 if (other.CompareTag("WalkingPlatform"))
                 {
                     SetAtmScoreSignal(collectableManager.gameObject);
-                    CollectableSignals.Instance.onTouchedWalkingPlatform?.Invoke(collectableManager.gameObject);
+                    CollectableSignals.Instance.onCollideWalkingPlatform?.Invoke(collectableManager.gameObject);
                 }
             }
             if (other.CompareTag("Collected") && CompareTag("Uncollected"))
             {
-                CollectableSignals.Instance.onTouchedCollectedMoney?.Invoke(collectableManager.gameObject);
+                CollectableSignals.Instance.onAddStackList?.Invoke(collectableManager.gameObject);
                 tag = "Collected";
                 SetPlayerScoreSignal(collectableManager.gameObject,1);
             }

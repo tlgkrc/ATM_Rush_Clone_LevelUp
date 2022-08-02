@@ -13,6 +13,7 @@ TagManager:
   - Uncollected
   - Money
   - WalkingPlatform
+  - Tower
   layers:
   - Default
   - TransparentFX

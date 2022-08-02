@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Controllers;
 using TMPro;
 using UnityEngine;
 using Enums;
@@ -16,7 +17,6 @@ namespace Managers
         #region Public Variables
 
         public MiniGameState backgroundAxis = MiniGameState.Vertical;
-
         public Transform targetTransform;
 
         #endregion
@@ -24,30 +24,22 @@ namespace Managers
         #region Serialized Variables
 
         [SerializeField] private List<GameObject> cubeList = new List<GameObject>();
-
         [SerializeField] private int predictedCubeCount;
-
-        [SerializeField] private int mostValuableObjectValue = 3; 
-        
+        [SerializeField] private int mostValuableObjectValue = 3;
         [SerializeField] private GameObject fakePlayer;
+        [SerializeField] private MiniGameAnimationController miniGameAnimationController;
         #endregion
 
         #region Private Variables
 
         private MiniGameData _data;
-
         private float _colorValue;
-
         private int _indexMinFactor;
-
         private Vector3 forwardStack;
-
         private Vector3 upwardsStack;
-        
         private int _levelCollactableCount;
-
         private int _levelScore;
-
+        
         #endregion
 
         #endregion
@@ -99,6 +91,40 @@ namespace Managers
 
         #endregion
 
+        private void OnNextLevel()
+        {
+            SetDefaultValueToMiniGame();   
+            OnLoadTower(backgroundAxis);
+        }
+
+        private void OnReset()
+        {
+            SetDefaultValueToMiniGame();
+            OnLoadTower(backgroundAxis);
+        }
+        
+        private void OnLoadTower(MiniGameState _backgroundAxis)
+        {
+            if (_backgroundAxis == MiniGameState.Vertical)
+            {
+                SetBuild(_backgroundAxis);
+            }
+            else
+            {
+                SetBuild(_backgroundAxis);
+            }
+        }
+
+        private void OnSetLevelScoreToMiniGame(int score)
+        {
+            _levelScore = score;
+        }
+
+        private void OnStartMiniGame()
+        {
+            miniGameAnimationController.StartAnim(targetTransform,_data,fakePlayer,_levelScore);
+        }
+        
         private MiniGameData GetLetterPathData() => Resources.Load<CD_MiniGame>("Data/CD_MiniGame").miniGameData;
 
         private int SetPredictedCubeCount() // Set cube count base level
@@ -189,68 +215,13 @@ namespace Managers
 
                     cubeList[i].transform.position = cubeList[i - 1].transform.position + SetStackDirection(_backgroundAxis, i);
                 }
-
-            }
-        }
-        private void OnLoadTower(MiniGameState _backgroundAxis)
-        {
-            if (_backgroundAxis == MiniGameState.Vertical)
-            {
-                SetBuild(_backgroundAxis);
-            }
-            else
-            {
-                SetBuild(_backgroundAxis);
             }
         }
 
-        private void OnSetLevelScoreToMiniGame(int score)
-        {
-            _levelScore = score;
-        }
-
-        private void OnStartMiniGame()
-        {
-            StartMiniGameAnim();
-        }
-        
-        //!!!Solid
-        
-        private void StartMiniGameAnim()
-        {
-            var position = targetTransform.position;
-            Vector3 newPos = new Vector3(position.x, position.y , position.z-_data.cubeScale.z*1.5f);
-            fakePlayer.SetActive(transform);
-            MoveFakePlayerLastPos(fakePlayer,newPos);
-        }
-        
-        private void MoveFakePlayerLastPos(GameObject fPlayer,Vector3 movedPos)
-        {
-            MiniGameSignals.Instance.onSetCameraTargetFakePlayer?.Invoke(fakePlayer);
-            //multiplied by 2 bcs every money cannot be diamond
-            var fakePlayerPos = (_levelScore / _data.maxMoneyValue) * _data.cubeScale.y * 2;
-            MiniGameSignals.Instance.onSetMoneyFactor?.Invoke(((float)_levelScore/(_data.maxMoneyValue*5)+ 1));
-            fPlayer.transform.DOMoveY(movedPos.y + fakePlayerPos, 10, false)
-                .OnComplete(() => CoreGameSignals.Instance.onLevelSuccessful?.Invoke());
-            
-        }
-
-        private void OnNextLevel()
-        {
-            SetDefaultValueToMiniGame();            
-        }
-
-        private void OnReset()
-        {
-            SetDefaultValueToMiniGame();
-        }
         private void SetDefaultValueToMiniGame()
         {
             fakePlayer.transform.localPosition =new Vector3(0,-2,-13);
             fakePlayer.SetActive(false);
-            
-            OnLoadTower(backgroundAxis);
-            cubeList.TrimExcess();
         }
     }
 }

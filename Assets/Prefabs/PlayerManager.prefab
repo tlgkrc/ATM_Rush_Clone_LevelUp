@@ -2075,9 +2075,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6064516344707263838}
   - component: {fileID: 4980625451968099852}
-  - component: {fileID: 517629795399030779}
   - component: {fileID: 714030021597811642}
   - component: {fileID: 2618169241018553728}
+  - component: {fileID: 5427547092301188462}
+  - component: {fileID: 1242416613232506382}
+  - component: {fileID: 1987192180736559406}
+  - component: {fileID: 2795212461940234180}
   m_Layer: 0
   m_Name: Stack
   m_TagString: Untagged
@@ -2112,22 +2115,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stackMovementController: {fileID: 714030021597811642}
-  stackPhysicsController: {fileID: 517629795399030779}
   stackAnimationController: {fileID: 2618169241018553728}
-  playerStackText: {fileID: 4994544626543116484}
-  playerManager: {fileID: 9128071747425244817}
---- !u!114 &517629795399030779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7035493661555060227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eecc9f7544ec3b1408b746c1571f74b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  stackCollideWPlatformCommand: {fileID: 5427547092301188462}
+  stackCollideAtmCommand: {fileID: 1242416613232506382}
+  stackCollideObstacleCommand: {fileID: 1987192180736559406}
+  addToStackCommand: {fileID: 2795212461940234180}
 --- !u!114 &714030021597811642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2140,8 +2132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9675b6663a430d54585828e330f8eb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationController: {fileID: 2618169241018553728}
-  physicsController: {fileID: 517629795399030779}
   manager: {fileID: 4980625451968099852}
 --- !u!114 &2618169241018553728
 MonoBehaviour:
@@ -2155,9 +2145,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0530d1e8a8914009a98201e7f1dca022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 4980625451968099852}
-  movementController: {fileID: 714030021597811642}
-  physicsController: {fileID: 517629795399030779}
+--- !u!114 &5427547092301188462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035493661555060227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79c8169ccd54880b52a4ffb1f399c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1242416613232506382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035493661555060227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f222f8d51c46b4b65ddc54d01c9a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1987192180736559406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035493661555060227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95abe2586b9449a08506fd9338551eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2795212461940234180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035493661555060227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c9deb9036d4a13925a7ded2f9f4a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7080427822366521394
 GameObject:
   m_ObjectHideFlags: 0

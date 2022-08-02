@@ -1,29 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using Managers;
 using UnityEngine;
 
 namespace Controllers
 {
     public class StackAnimationController : MonoBehaviour
     {
-        #region Self Variables
 
-        #region Serialized Variables
-
-        [SerializeField] private StackManager manager;
-        [SerializeField] private StackMovementController movementController;
-        [SerializeField] private StackPhysicsController physicsController;
-
-        #endregion
-
-        #region Private Variables
-        
-        #endregion
-
-        #endregion
-        
         public IEnumerator MoneyScale(List<GameObject> newList) 
         {
             var increasedScale = Vector3.one*1.7f ;
@@ -32,7 +16,7 @@ namespace Controllers
                 var index = (newList.Count -1) - i;
 
                 newList[index].transform.DOScale(increasedScale, 0.1f).SetEase(Ease.Flash); 
-                newList[index].transform.DOScale(Vector3.one, .1f ).SetEase(Ease.Flash).SetDelay(.1f); 
+                newList[index].transform.DOScale(Vector3.one*1.2f, .1f ).SetEase(Ease.Flash).SetDelay(.1f); 
                 yield return new WaitForSeconds(0.05f);
             }
         }

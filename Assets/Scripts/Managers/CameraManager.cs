@@ -1,5 +1,4 @@
-﻿using System;
-using Cinemachine;
+﻿using Cinemachine;
 using Enums;
 using Signals;
 using Sirenix.OdinInspector;
@@ -43,7 +42,7 @@ namespace Managers
         
         private void SubscribeEvents()
         {
-            CoreGameSignals.Instance.onSetCameraState += OnSetCameraState;
+            CoreGameSignals.Instance.onSetCameraState += OnSetNextCameraState;
             CoreGameSignals.Instance.onReset += OnReset;
             CoreGameSignals.Instance.onSetCameraTarget += OnSetCameraTarget;
             CoreGameSignals.Instance.onFinishLineReached += OnStartMiniGameCam;
@@ -54,7 +53,7 @@ namespace Managers
         
         private void UnsubscribeEvents()
         {
-            CoreGameSignals.Instance.onSetCameraState -= OnSetCameraState;
+            CoreGameSignals.Instance.onSetCameraState -= OnSetNextCameraState;
             CoreGameSignals.Instance.onReset -= OnReset;
             CoreGameSignals.Instance.onSetCameraTarget -= OnSetCameraTarget;
             CoreGameSignals.Instance.onFinishLineReached -= OnStartMiniGameCam;
@@ -100,7 +99,7 @@ namespace Managers
         }
         
         
-        private void OnSetCameraState(CameraTypes cameraTypes)
+        private void OnSetNextCameraState(CameraTypes cameraTypes)
         {
             if (cameraTypes == CameraTypes.InitializeCam)
             {
@@ -126,7 +125,7 @@ namespace Managers
 
         private void OnStartMiniGameCam()
         {
-            OnSetCameraState(CameraTypes.RunnerCam);
+            OnSetNextCameraState(CameraTypes.RunnerCam);
         }
 
         private void OnSetCameraTargetFakePlayer(GameObject fakePlayer)
@@ -136,13 +135,13 @@ namespace Managers
 
         private void OnNextLevel()
         {
-            OnSetCameraState(CameraTypes.MiniGameCam);
+            OnSetNextCameraState(CameraTypes.MiniGameCam);
             OnSetCameraTarget();
         }
 
         private void OnRestartLevel()
         {
-            OnSetCameraState(CameraTypes.MiniGameCam);
+            OnSetNextCameraState(CameraTypes.MiniGameCam);
             OnSetCameraTarget();
         }
     }
