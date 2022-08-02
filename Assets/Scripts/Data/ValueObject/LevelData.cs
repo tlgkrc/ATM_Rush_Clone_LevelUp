@@ -1,10 +1,11 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Data.ValueObject
 {
     [Serializable]
     public class LevelData
     {
-        public int TotalObjectCount = 10;
+        public GameObject gO;
     }
 }

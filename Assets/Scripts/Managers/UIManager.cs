@@ -17,12 +17,19 @@ namespace Managers
         [SerializeField]
         private LevelPanelController levelPanelController;
 
+        [SerializeField] private SteadyPanelController steadyPanelController;
+
         #endregion
 
         #endregion
         
 
         #region Event Subscriptions
+
+        private void Awake()
+        {
+            LoadDefaultMoney();
+        }
 
         private void OnEnable()
         {
@@ -32,6 +39,7 @@ namespace Managers
         private void SubscribeEvents()
         {
             UISignals.Instance.onChangeLevelText += OnChangeLevelText;
+            UISignals.Instance.onChangeMoneyText += OnChangeMoneyText;
             UISignals.Instance.onOpenPanel += OnOpenPanel;
             UISignals.Instance.onClosePanel += OnClosePanel;
             CoreGameSignals.Instance.onPlay += OnPlay;
@@ -45,6 +53,7 @@ namespace Managers
         private void UnsubscribeEvents()
         {
             UISignals.Instance.onChangeLevelText -= OnChangeLevelText;
+            UISignals.Instance.onChangeMoneyText -= OnChangeMoneyText;
             UISignals.Instance.onOpenPanel -= OnOpenPanel;
             UISignals.Instance.onClosePanel -= OnClosePanel;
             CoreGameSignals.Instance.onPlay -= OnPlay;
@@ -88,13 +97,14 @@ namespace Managers
             CoreGameSignals.Instance.onPlay?.Invoke();
             CoreGameSignals.Instance.onSetCameraTarget.Invoke();
             CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraTypes.InitializeCam);
+            OnChangeLevelText();
         }
         
         private void OnRestartLevel()
         {
-            UISignals.Instance.onOpenPanel?.Invoke(UIPanels.LevelPanel);
+            UISignals.Instance.onClosePanel?.Invoke(UIPanels.LevelPanel);
             UISignals.Instance.onClosePanel?.Invoke(UIPanels.WinPanel);
-            UISignals.Instance.onClosePanel?.Invoke(UIPanels.StartPanel);
+            UISignals.Instance.onOpenPanel?.Invoke(UIPanels.StartPanel);
         }
 
         public void Restart()
@@ -106,6 +116,7 @@ namespace Managers
         {
             UISignals.Instance.onClosePanel?.Invoke(UIPanels.WinPanel);
             UISignals.Instance.onOpenPanel?.Invoke(UIPanels.StartPanel);
+            UISignals.Instance.onChangeLevelText?.Invoke();
         }
 
         public void Next()
@@ -119,16 +130,29 @@ namespace Managers
             UISignals.Instance.onOpenPanel?.Invoke(UIPanels.WinPanel);
         }
 
-        private void OnChangeLevelText(int levelText )
+        private void OnChangeLevelText()
         {
-            levelPanelController.SetLevelText(levelText);
+            var levelID = CoreGameSignals.Instance.onGetLevelID.Invoke();
+            levelPanelController.SetLevelText(levelID+1);
         }
 
+        private void OnChangeMoneyText(int lastScore)
+        {
+            steadyPanelController.SetMoneyText(lastScore);
+        }
 
-
-
-
-
-
+        private void LoadDefaultMoney()
+        {
+            int defaultMoney;
+            if (!ES3.KeyExists("Money"))
+            {
+                defaultMoney = 0;
+            }
+            else
+            {
+                defaultMoney = ES3.Load<int>("Money");
+            }
+            steadyPanelController.SetMoneyText(defaultMoney);
+        }
     }
 }

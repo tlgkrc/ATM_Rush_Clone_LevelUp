@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CD_Level
   m_EditorClassIdentifier: 
   Levels:
-  - TotalObjectCount: 50
-  - TotalObjectCount: 60
+  - gO: {fileID: 1345940461304317070, guid: 65273aa8dac43344fb4f0aa13ced0861, type: 3}
+  - gO: {fileID: 1345940461304317070, guid: 57d80d29d198bbb4e8ed29da8cb0a006, type: 3}
+  - gO: {fileID: 1345940461304317070, guid: c9ccf72be914a804092f6425f14c3de0, type: 3}

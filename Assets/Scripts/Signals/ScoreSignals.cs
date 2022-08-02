@@ -1,4 +1,5 @@
-﻿using Enums;
+﻿using System;
+using Enums;
 using Extentions;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,5 +12,8 @@ namespace Signals
         public UnityAction<int> onDecreasePlayerScore = delegate {  };
         public UnityAction<int> onIncreaseATMScore = delegate {  };
         public UnityAction onSetLevelScore = delegate {  };
+        public UnityAction<int> onSetTotalLevelScore = delegate {  };
+        
+        public UnityAction<int> onGetUpdatedMoney  = delegate {  };
     }
 }

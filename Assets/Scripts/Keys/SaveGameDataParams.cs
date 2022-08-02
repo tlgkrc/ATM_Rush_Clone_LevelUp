@@ -2,7 +2,7 @@
 {
     public struct SaveGameDataParams
     {
-        public int TotalMoney;
+        public int Money;
         public int Level;
     }
 }

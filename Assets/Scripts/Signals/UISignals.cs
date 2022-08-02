@@ -8,7 +8,8 @@ namespace Signals
     {
         public UnityAction<UIPanels> onOpenPanel = delegate {  };
         public UnityAction<UIPanels> onClosePanel = delegate {  };
-        public UnityAction<int> onChangeLevelText = delegate {  };
+        public UnityAction onChangeLevelText = delegate {  };
+        public UnityAction<int> onChangeMoneyText = delegate {  };
 
     }
 }

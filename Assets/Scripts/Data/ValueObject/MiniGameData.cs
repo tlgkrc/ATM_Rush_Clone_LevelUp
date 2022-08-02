@@ -12,8 +12,6 @@ namespace Data.ValueObject
 
         public GameObject cubePrefab;
 
-        public int cubeScaleFactor = 10;
-        
         public float indexMaxFactor = 100.0f;
 
         public float colliderSize = 2.0f;

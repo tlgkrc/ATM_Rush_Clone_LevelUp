@@ -142,7 +142,7 @@ namespace Managers
 
         private void OnRestartLevel()
         {
-            OnSetCameraState(CameraTypes.InitializeCam);
+            OnSetCameraState(CameraTypes.MiniGameCam);
             OnSetCameraTarget();
         }
     }

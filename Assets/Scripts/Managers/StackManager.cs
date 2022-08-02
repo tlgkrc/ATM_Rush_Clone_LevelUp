@@ -134,7 +134,7 @@ namespace Managers
                 _stackMembers[i].transform.SetParent(_collectables.transform);
                 _stackMembers[i].transform.DOJump(newPos, 2f, 1, .2f, false);
                 _stackMembers.RemoveAt(i);
-                _stackMembers.TrimExcess(); ;
+                _stackMembers.TrimExcess(); 
             }
         }
 

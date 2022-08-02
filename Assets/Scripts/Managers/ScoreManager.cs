@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Controllers;
+using Keys;
 using Signals;
 using TMPro;
 using UnityEngine;
@@ -11,8 +13,7 @@ namespace Managers
         #region Self Variables
 
         #region Serialized Variables
-
-        // [SerializeField] private TextMeshPro textATMScore;
+        
         [SerializeField] private List<TextMeshPro> textList = new List<TextMeshPro>();
 
         #endregion
@@ -20,13 +21,20 @@ namespace Managers
         #region Private Variables
 
         private int _atmScore = 0;
+        private int _score;
+        private float _factor;
+        private int _totalScore;
 
         #endregion
 
         #endregion
-        
 
         #region Subscription Events
+
+        private void Awake()
+        {
+            _totalScore = GetCurrentMoney();
+        }
 
         private void OnEnable()
         { 
@@ -36,13 +44,17 @@ namespace Managers
         private void SubscribeEvents()
         {
             ScoreSignals.Instance.onIncreaseATMScore += OnIncreaseATMScore;
-            // ScoreSignals.Instance.onSetLevelScore += OnSetLevelScore;
+            ScoreSignals.Instance.onSetTotalLevelScore += OnSetTotalLevelScore;
+            MiniGameSignals.Instance.onSetMoneyFactor += OnSetMoneyFactor;
+            CoreGameSignals.Instance.onNextLevel += OnNextLevel;
         }
 
         private void UnsubscribeEvents()
         {
             ScoreSignals.Instance.onIncreaseATMScore -= OnIncreaseATMScore;
-            // ScoreSignals.Instance.onSetLevelScore -= OnSetLevelScore;
+            ScoreSignals.Instance.onSetTotalLevelScore -= OnSetTotalLevelScore;
+            MiniGameSignals.Instance.onSetMoneyFactor -= OnSetMoneyFactor;
+            CoreGameSignals.Instance.onNextLevel -= OnNextLevel;
         }
 
         private void OnDisable()
@@ -52,6 +64,12 @@ namespace Managers
 
         #endregion
         
+        private int GetCurrentMoney()
+        {
+            if (!ES3.FileExists()) return 0;
+            return ES3.KeyExists("Money") ? ES3.Load<int>("Money") : 0;
+        }
+
         private void OnIncreaseATMScore(int score)
         {
             _atmScore += score;
@@ -61,14 +79,30 @@ namespace Managers
             }
         }
         
+
+        private void OnSetMoneyFactor(float factor)
+        {
+            _factor = factor;
+        }
+
+        private void OnSetTotalLevelScore(int score)
+        {
+            _score = score;
+        }
         
-        // private int playerScore = 10;
-        //
-        // int totalCollectableCount = 20
-        // private int maxPlayerScore = totalCollectableCount*3;
-        //
-        // private float multipleScore = (playerScore / maxPlayerScore ) + 1 // totalScoreOnData
-        //
-        // private float newPosYPlayerAnim = (playerScore / maxPlayerScore) * collectableScaleY * TotalCollectableCount; // gorsel show
+
+        private void OnNextLevel()
+        {
+            CoreGameSignals.Instance.onSaveGame?.Invoke(new SaveGameDataParams()
+            {
+                Money = SetLastScore()
+            });
+            UISignals.Instance.onChangeMoneyText?.Invoke(SetLastScore());
+        }
+
+        private int SetLastScore()
+        {
+            return (int)(_score * _factor) + _totalScore;
+        }
     }
 }

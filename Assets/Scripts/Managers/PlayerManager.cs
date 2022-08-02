@@ -65,7 +65,8 @@ namespace Managers
             InputSignals.Instance.onInputDragged += OnGetInputValues;
             ScoreSignals.Instance.onIncreasePlayerScore += OnIncreasePlayerScore;
             ScoreSignals.Instance.onDecreasePlayerScore += OnDecreasePlayerScore;
-            
+            ScoreSignals.Instance.onSetTotalLevelScore -= OnSetTotalLevelScore;
+
 
             CoreGameSignals.Instance.onPlay += OnPlay;
             CoreGameSignals.Instance.onReset += OnReset;
@@ -86,6 +87,7 @@ namespace Managers
             CoreGameSignals.Instance.onFinishLineReached -= OnFinishLineReached;
             ScoreSignals.Instance.onIncreasePlayerScore -= OnIncreasePlayerScore;
             ScoreSignals.Instance.onDecreasePlayerScore -= OnDecreasePlayerScore;
+            ScoreSignals.Instance.onSetTotalLevelScore -= OnSetTotalLevelScore;
         }
 
         private void OnDisable()
@@ -136,6 +138,8 @@ namespace Managers
             movementController.IsReadyToPlay(false);
             animationController.ActivatePlayerAnim(false);
             animationController.MiniGamePlayerAnim(true);
+            ScoreSignals.Instance.onSetTotalLevelScore?.Invoke(_playerScore);
+            MiniGameSignals.Instance.onSetLevelScoreToMiniGame?.Invoke(_playerScore);
         }
 
         private void OnIncreasePlayerScore(int score)
@@ -150,9 +154,10 @@ namespace Managers
             playerScoreTMP.text = _playerScore.ToString();
         }
 
-        public int SetFinalScore()
+        private void OnSetTotalLevelScore(int levelScore)
         {
-            return _playerScore;
+            _playerScore = levelScore;
         }
+        
     }
 }

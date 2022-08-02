@@ -105,11 +105,6 @@ namespace Managers
 
         private MiniGameData GetLetterPathData() => Resources.Load<CD_MiniGame>("Data/CD_MiniGame").miniGameData;
 
-        public void SetAtmData(int atmData)
-        {
-            _levelScore = atmData;
-        }
-
         private int SetPredictedCubeCount() // Set cube count base level
         {
             return predictedCubeCount;
@@ -151,8 +146,9 @@ namespace Managers
         }
         private void SetTextOnCubes(GameObject gO, MiniGameState _backgroundAxis)
         {
-            if (_indexMinFactor > data.indexMaxFactor)
+            if (_indexMinFactor >= data.indexMaxFactor-1)
             {
+                _indexMinFactor = 0;
                 return;
             }
 
@@ -169,7 +165,6 @@ namespace Managers
 
                 gO.transform.GetChild(1).GetComponentInChildren<TextMeshPro>().text = (value + 1).ToString() + "x";
             }
-
             _indexMinFactor++;
         }
         private Vector3 SetStackDirection(MiniGameState _backgroundAxis, int index)
@@ -228,7 +223,6 @@ namespace Managers
             var position = targetTransform.position;
             Vector3 newPos = new Vector3(position.x, position.y , position.z-data.cubeScale.z*1.5f);
             fakePlayer.SetActive(transform);
-            // fakePlayer.transform.position = newPos;
             MoveFakePlayerLastPos(fakePlayer,newPos);
         }
         
@@ -237,8 +231,10 @@ namespace Managers
             MiniGameSignals.Instance.onSetCameraTargetFakePlayer?.Invoke(fakePlayer);
             //multiplied by 2 bcs every money cannot be diamond
             var fakePlayerPos = (_levelScore / data.maxMoneyValue) * data.cubeScale.y * 2;
+            MiniGameSignals.Instance.onSetMoneyFactor?.Invoke(((float)_levelScore/(data.maxMoneyValue*5)+ 1));
             fPlayer.transform.DOMoveY(movedPos.y + fakePlayerPos, 10, false)
                 .OnComplete(() => CoreGameSignals.Instance.onLevelSuccessful?.Invoke());
+            
         }
 
         private void OnNextLevel()
@@ -254,7 +250,9 @@ namespace Managers
         {
             fakePlayer.transform.localPosition =new Vector3(0,-2,-13);
             fakePlayer.SetActive(false);
+            
             OnLoadTower(backgroundAxis);
+            cubeList.TrimExcess();
         }
     }
 

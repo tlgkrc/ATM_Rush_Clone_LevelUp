@@ -1,3 +1,4 @@
+using System;
 using Extentions;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,6 @@ namespace Signals
         public UnityAction<int> onSetLevelScoreToMiniGame = delegate {  };
         public UnityAction onStartMiniGame =delegate {  };
         public UnityAction<GameObject> onSetCameraTargetFakePlayer = delegate {  };
-
+        public UnityAction<float> onSetMoneyFactor = delegate{  };
     }
 }
