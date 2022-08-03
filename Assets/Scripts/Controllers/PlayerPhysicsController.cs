@@ -37,6 +37,8 @@ namespace Controllers
                 CoreGameSignals.Instance.onFinishLineReached?.Invoke();
 
                 MiniGameSignals.Instance.onStartMiniGame?.Invoke();
+                
+                playerManager.gameObject.SetActive(false);
             }
 
             if (other.CompareTag("ATM"))

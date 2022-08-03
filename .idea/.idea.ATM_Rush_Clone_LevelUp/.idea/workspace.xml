@@ -2,26 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac90f9b8-b136-4f75-8f67-791274896415" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Commands/MiniGameSetTowerCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Commands/MiniGameSetTowerCommand.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ATM_Rush_Clone_LevelUp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ATM_Rush_Clone_LevelUp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/ATM.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/ATM.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/Banka 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/Banka 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/Starting_area_ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/Starting_area_ground.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/WalkingPlatformMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/WalkingPlatformMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/Walking_Platform_corner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/Walking_Platform_corner.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/bear.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/bear.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/saksi.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/saksi.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/starting_area_grass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Other/Materials/starting_area_grass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Ground.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ATM 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ATM 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Collibtable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Collibtable.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FakePlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FakePlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MiniGameCube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MiniGameCube.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MoneyManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MoneyManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PlayerManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Road.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Road.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SwimmingObstacleParent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SwimmingObstacleParent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/CD_Player.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/CD_Player.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 0.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/Level 2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene/Volume Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene/Volume Profile.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commands/AddToStackCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commands/AddToStackCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commands/StackCollideObstacleCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commands/StackCollideObstacleCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/CollectableMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/CollectableMovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/MiniGamePhysicController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/MiniGamePhysicController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/MiniGameSetTowerController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/MiniGameSetTowerController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerAnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerAnimationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerMovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commands/MiniGameSetTowerCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commands/MiniGameSetTowerCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commands/StackCollideAtmCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commands/StackCollideAtmCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/MiniGameAnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/MiniGameAnimationController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerPhysicsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerPhysicsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SteadyPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SteadyPanelController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/UIPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/UIPanelController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/StackMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/StackMovementController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/MiniGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/MiniGameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/ScoreManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/ScoreManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Signals/ScoreSignals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Signals/ScoreSignals.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/StackManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/StackManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP-HighQuality.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRP-HighQuality.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +115,8 @@
       <workItem from="1659400177176" duration="5048000" />
       <workItem from="1659406537190" duration="605000" />
       <workItem from="1659424604766" duration="29216000" />
-      <workItem from="1659497731624" duration="6222000" />
+      <workItem from="1659497731624" duration="6607000" />
+      <workItem from="1659509629669" duration="18565000" />
     </task>
     <servers />
   </component>

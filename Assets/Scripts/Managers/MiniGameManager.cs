@@ -103,7 +103,7 @@ namespace Managers
         
         private void OnLoadTower(MiniGameState state)
         {
-            miniGameSetTowerCommand.SetTowerOnScene(_data,state,SetPredictedCubeCount(),cubeList,targetTransform);
+            miniGameSetTowerCommand.SetTowerOnScene(_data,state,predictedCubeCount,cubeList,targetTransform);
         }
 
         private void OnSetLevelScoreToMiniGame(int score)
@@ -120,11 +120,6 @@ namespace Managers
         
         private MiniGameData GetLetterPathData() => Resources.Load<CD_MiniGame>("Data/CD_MiniGame").miniGameData;
 
-        private int SetPredictedCubeCount()
-        {
-            return predictedCubeCount;
-        }
-        
         private void SetDefaultValueToMiniGame()
         {
             fakePlayer.transform.localPosition =new Vector3(0,-2,-13);

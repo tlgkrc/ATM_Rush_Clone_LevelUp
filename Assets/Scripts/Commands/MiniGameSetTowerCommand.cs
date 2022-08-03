@@ -15,7 +15,6 @@ namespace Commands
             {
                 cubeList.Add(Instantiate(data.cubePrefab, targetTransform));
 
-                
                 colorValue += 0.05f;
 
                 if (colorValue >= 0.9f)

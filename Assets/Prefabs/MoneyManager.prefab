@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8965587812958895971, guid: 5cfe293773e94ec4390b42f3350b7b56, type: 3}
+  - {fileID: 2100000, guid: fcece31645099aa42812485778d72bbf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,7 +95,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectableManager: {fileID: 6250070994124950205}
-  collectablePhysicsController: {fileID: 404368602986277963}
   meshFilters:
   - {fileID: -6749094374590335035, guid: 5cfe293773e94ec4390b42f3350b7b56, type: 3}
   - {fileID: -6390563017650441280, guid: 5cfe293773e94ec4390b42f3350b7b56, type: 3}
@@ -162,7 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a2863d9cd0429bba0638fec05d7ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectableManager: {fileID: 6250070994124950205}
 --- !u!1 &6622741311131122698
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,4 +236,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectableManager: {fileID: 6250070994124950205}
-  collectableMeshFilterController: {fileID: 4856473852311762820}

@@ -9,12 +9,13 @@ namespace Commands
         public void CollectableAddToStack(List<GameObject> stackList,GameObject gO,StackAnimationController stackAnimationController)
         {
             stackList.Add(gO);
-            gO.transform.SetParent(stackAnimationController.transform);
-            if (stackList.Count ==0)
+            gO.transform.SetParent(transform);
+            if (stackList.Count ==1)
             {
-                stackList[0].transform.localPosition = Vector3.zero;
+                stackList[0].transform.localPosition = new Vector3(0,.5f,0);
+                return;
             }
-            for (int i = 1; i <= stackList.Count - 1; i++)
+            for (int i = 1; i < stackList.Count; i++)
             {
                 stackList[i].transform.localPosition =
                     stackList[i - 1].transform.localPosition + Vector3.forward;

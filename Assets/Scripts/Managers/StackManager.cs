@@ -2,10 +2,8 @@ using System.Collections.Generic;
 using Commands;
 using UnityEngine;
 using Controllers;
-using DG.Tweening;
 using Signals;
 using Sirenix.OdinInspector;
-using TMPro;
 
 namespace Managers
 {
@@ -73,7 +71,7 @@ namespace Managers
 
         private void Update()
         {
-            stackMovementController.LerpMoney(_stackMembers);
+            stackMovementController.Lerp(_stackMembers);   
         }
 
         private void OnTakeCollectableToStack(GameObject _gO)
@@ -88,7 +86,7 @@ namespace Managers
 
         private void OnCollideATM(GameObject gO)
         {
-            stackCollideAtmCommand.CollideWithAtm(gO,_stackMembers);
+            stackCollideAtmCommand.StackCollideWithAtm(gO,_stackMembers);
         }
 
         private void OnCollideWalkingPlatform(GameObject gO)
