@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using Data.ValueObject;
+﻿using Data.ValueObject;
 using DG.Tweening;
 using Managers;
 using Signals;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using System;
-using UnityEngine.SocialPlatforms.Impl;
+
 
 namespace Controllers
 {
@@ -17,16 +14,11 @@ namespace Controllers
         #region Serialized Variables
         
         [SerializeField] private PlayerManager playerManager;
-        [SerializeField] private new Collider collider;
-        [SerializeField] private new Rigidbody rigidbody;
-
 
         #endregion
 
         #region Private Variables
-
-        [Header("Data")]
-        [ShowInInspector]
+        
         private PlayerPullBackForceData _playerPullBackForceData;
 
         #endregion

@@ -1,6 +1,5 @@
 ﻿using Data.ValueObject;
 using Keys;
-using Managers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -10,13 +9,8 @@ namespace Controllers
     {
         #region Self Variables
 
-        #region Public Variables
-        
-        #endregion
-
         #region Serialized Variables
 
-        [SerializeField] private PlayerManager manager;
         [SerializeField] private new Rigidbody rigidbody;
 
         #endregion

@@ -13,7 +13,5 @@ namespace Signals
         public UnityAction<int> onIncreaseATMScore = delegate {  };
         public UnityAction onSetLevelScore = delegate {  };
         public UnityAction<int> onSetTotalLevelScore = delegate {  };
-        
-        public UnityAction<int> onGetUpdatedMoney  = delegate {  };
     }
 }

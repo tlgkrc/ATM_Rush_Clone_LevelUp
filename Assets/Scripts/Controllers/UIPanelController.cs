@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using Enums;
-using Keys;
-using TMPro;
 using UnityEngine;
 
 namespace Controllers

@@ -20,7 +20,7 @@ namespace Managers
 
         #region Private Variables
 
-        private int _atmScore = 0;
+        private int _atmScore;
         private int _score;
         private float _factor;
         private int _totalScore;

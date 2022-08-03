@@ -1,18 +1,12 @@
-﻿using System;
-using Keys;
+﻿using Keys;
 using Signals;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
         #region Self Variables
-
-        #region Public Variables
-
-        #endregion
 
         #endregion
 

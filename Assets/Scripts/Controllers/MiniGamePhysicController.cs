@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using Managers;
 using UnityEngine;
@@ -8,12 +7,6 @@ namespace Controllers
     public class MiniGamePhysicController : MonoBehaviour
     {
         #region Self Variables
-
-        #region Serialized Variables
-
-        [SerializeField] private MiniGameManager manager;
-
-        #endregion
 
         #endregion
 

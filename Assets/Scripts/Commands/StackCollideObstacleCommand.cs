@@ -16,7 +16,7 @@ namespace Commands
             stackMembers.TrimExcess();
             if (stackMembers.Count == 0)
             {
-                stackMembers[0].transform.localPosition = Vector3.zero;
+                return;
             }
 
             for (int i = 1; i <= stackMembers.Count - 1; i++)

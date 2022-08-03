@@ -1,6 +1,4 @@
-﻿using Managers;
-using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Controllers
 {
