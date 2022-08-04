@@ -1,6 +1,6 @@
 # ATM Rush Clone LevelUp
 
-![ATM_Rush_Clone_LevelUp_AdobeExpress](https://user-images.githubusercontent.com/92987466/182829872-ad401213-060b-4656-9ed7-1911557341d9.gif)
+![ATM_Rush_Clone_LevelUp_AdobeExpress](https://user-images.githubusercontent.com/92987466/182832306-d4dfcc00-2a1a-4451-be56-a44e46c0af01.gif)
 
 
 ## Indroduce
