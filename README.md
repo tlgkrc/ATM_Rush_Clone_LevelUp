@@ -20,14 +20,14 @@
 )
 
 ## Used Unity Packages
--Cinemachine
--Toony Colors
--DOTween
--TextMeshPro
--GUI Packages
--EasySave3
+- Cinemachine
+- Toony Colors
+- DOTween
+- TextMeshPro
+- GUI Packages
+- EasySave3
 
 ## Used Patterns
--Observer Pattern
--Singleton
--Almost Command Pattern :grin:
+- Observer Pattern
+- Singleton
+- Almost Command Pattern :grin:
