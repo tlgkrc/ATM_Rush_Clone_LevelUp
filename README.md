@@ -1,6 +1,7 @@
 # ATM Rush Clone LevelUp
 
-![AtmRushClone](https://user-images.githubusercontent.com/92987466/182831835-84f41627-f6d1-477b-bd94-ce718f4f753a.png)
+![ATM_Rush_Clone_LevelUp_AdobeExpress](https://user-images.githubusercontent.com/92987466/182829872-ad401213-060b-4656-9ed7-1911557341d9.gif)
+
 
 ## Indroduce
 *Hi:punch:,I'm from Turkey,and I do game development.*
@@ -10,14 +11,9 @@
 
 [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40'>](https://github.com/Burak-san)  [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='40'>](https://www.linkedin.com/in/burak-orhan-aohg2022//)  
 
-![ATM_Rush_Clone_LevelUp_AdobeExpress](https://user-images.githubusercontent.com/92987466/182829872-ad401213-060b-4656-9ed7-1911557341d9.gif)
-
 ## GamePlay Screenshots
-(![ss1](https://user-images.githubusercontent.com/92987466/182791867-3a77002b-f08b-4057-ab3d-569723384902.png)
-![ss2](https://user-images.githubusercontent.com/92987466/182791873-f8f7f870-e9de-4a4f-95a1-23a094fcf01f.png)
-![ss3](https://user-images.githubusercontent.com/92987466/182791877-915b58b4-997d-4716-99c6-5821da797a18.png)
-![ss4](https://user-images.githubusercontent.com/92987466/182791885-b5ae389f-e921-4443-b6f5-07d0bd93197b.png)
-)
+
+![AtmRushClone](https://user-images.githubusercontent.com/92987466/182831835-84f41627-f6d1-477b-bd94-ce718f4f753a.png)
 
 ## Used Unity Packages
 - Cinemachine
