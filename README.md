@@ -1,14 +1,14 @@
 # ATM Rush Clone LevelUp
 
-
+![AtmRushClone](https://user-images.githubusercontent.com/92987466/182831835-84f41627-f6d1-477b-bd94-ce718f4f753a.png)
 
 ## Indroduce
 *Hi:punch:,I'm from Turkey,and I do game development.*
 *We developed this game with my teammate for the second game of Levelup Academy. Detailed information about the game is given below. Have a nice day*
 
-[<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40'>](https://github.com/tolgakrc)  [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='40'>](https://www.linkedin.com/in/https://www.linkedin.com/in/tolga-karaca-7a5baa110//)  
+[<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40'>](https://github.com/tolgakrc)  [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='40'>](https://www.linkedin.com/in/tolga-karaca-7a5baa110//)  
 
-[<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40'>](https://github.com/Burak-san)  [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='40'>](https://www.linkedin.com/in/https://www.linkedin.com/in/burak-orhan-aohg2022//)  
+[<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40'>](https://github.com/Burak-san)  [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='40'>](https://www.linkedin.com/in/burak-orhan-aohg2022//)  
 
 ![ATM_Rush_Clone_LevelUp_AdobeExpress](https://user-images.githubusercontent.com/92987466/182829872-ad401213-060b-4656-9ed7-1911557341d9.gif)
 
