@@ -15,6 +15,11 @@
 
 ![AtmRushClone](https://user-images.githubusercontent.com/92987466/182831835-84f41627-f6d1-477b-bd94-ce718f4f753a.png)
 
+## Used Mechanics 
+- Swerve
+- Stack
+- Lerp
+
 ## Used Unity Packages
 - Cinemachine
 - Toony Colors
