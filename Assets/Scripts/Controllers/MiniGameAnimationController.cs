@@ -17,8 +17,10 @@ namespace Controllers
             MiniGameSignals.Instance.onSetCameraTargetFakePlayer?.Invoke(fakePlayer);
             
             var fakePlayerPos = (levelScore / data.maxMoneyValue) * data.cubeScale.y * 2;
-            fakePlayer.transform.DOMoveY(newPos.y + fakePlayerPos, 5, false)
+            fakePlayer.transform.DOMoveY(newPos.y + fakePlayerPos, 10, false)
                 .OnComplete(() => CoreGameSignals.Instance.onLevelSuccessful?.Invoke());
+            
+            
         }
     }
 }

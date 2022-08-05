@@ -143,15 +143,7 @@ namespace Managers
 
         private void LoadDefaultMoney()
         {
-            int defaultMoney;
-            if (!ES3.KeyExists("Money"))
-            {
-                defaultMoney = 0;
-            }
-            else
-            {
-                defaultMoney = ES3.Load<int>("Money");
-            }
+            var defaultMoney = !ES3.KeyExists("Money") ? 0 : ES3.Load<int>("Money");
             steadyPanelController.SetMoneyText(defaultMoney);
         }
     }

@@ -9,7 +9,6 @@ namespace Commands
         public void CollectableAddToStack(List<GameObject> stackList,GameObject gO,StackAnimationController stackAnimationController)
         {
             stackList.Add(gO);
-            gO.transform.SetParent(transform);
             if (stackList.Count ==1)
             {
                 stackList[0].transform.localPosition = new Vector3(0,.5f,0);
@@ -20,6 +19,7 @@ namespace Commands
                 stackList[i].transform.localPosition =
                     stackList[i - 1].transform.localPosition + Vector3.forward;
             }
+            gO.transform.SetParent(transform);
             stackAnimationController.StartCoroutine(stackAnimationController.MoneyScale(stackList));
         }
     }

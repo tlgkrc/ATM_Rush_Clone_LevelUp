@@ -8,12 +8,12 @@ namespace Commands
     {
         public void StackCollideWPlatform(GameObject gO, List<GameObject> stackList)
         {
-            stackList.Remove(gO);
-            stackList.TrimExcess();
             if (stackList.Count==0)
             {
                 ScoreSignals.Instance.onSetLevelScore?.Invoke();
             }
+            stackList.Remove(gO);
+            stackList.TrimExcess();
         }
     }
 }

@@ -28,7 +28,6 @@ namespace Managers
 
         [ShowInInspector] private List<GameObject> _stackMembers = new List<GameObject>();
         private GameObject _collectables;
-        private bool _isSeperatedFromPlayer = false;
 
         #endregion
 

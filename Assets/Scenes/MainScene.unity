@@ -1126,6 +1126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 2123073057}
+  uiManager: {fileID: 1731093505}
 --- !u!1 &864841011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2839,7 +2840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 8, z: 25}
+  m_FollowOffset: {x: 0, y: 10, z: 25}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
