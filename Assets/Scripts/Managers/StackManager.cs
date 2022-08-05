@@ -27,7 +27,8 @@ namespace Managers
         #region Private Variables
 
         [ShowInInspector] private List<GameObject> _stackMembers = new List<GameObject>();
-        private GameObject _collectables;
+        
+        [ShowInInspector] private GameObject _collectables;
 
         #endregion
 
@@ -37,6 +38,7 @@ namespace Managers
         {
             _collectables = GameObject.Find("Collectables");
         }
+        
 
         #region Subscribe Events
 
@@ -90,7 +92,7 @@ namespace Managers
 
         private void OnCollideWalkingPlatform(GameObject gO)
         { 
-            stackCollideWPlatformCommand.StackCollideWPlatform(gO,_stackMembers);
+            stackCollideWPlatformCommand.StackCollideWPlatform(gO,_stackMembers,_collectables);
         }
     }
 }

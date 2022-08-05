@@ -22,7 +22,7 @@ namespace Commands
                 var newPos = new Vector3(Random.Range(-5f, 5f), 0.5f, obsPos.z + Random.Range(5f, 20f));
                 stackMembers[i].transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = true;
                 stackMembers[i].transform.SetParent(collectables.transform);
-                stackMembers[i].transform.DOJump(newPos, 2f, 1, .2f, false);
+                stackMembers[i].transform.DOJump(newPos, 2f, 2, .5f, false);
                 stackMembers.RemoveAt(i);
             }
             
