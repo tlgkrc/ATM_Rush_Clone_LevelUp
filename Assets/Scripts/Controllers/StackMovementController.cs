@@ -19,8 +19,7 @@ namespace Controllers
         #region Private Variables
 
         private List<GameObject> _newList = new List<GameObject>();
-
-
+        
         #endregion
 
         #endregion
@@ -28,20 +27,11 @@ namespace Controllers
         public void Lerp(List<GameObject> stackList)
         {
             _newList = stackList;
-            StartCoroutine(LerpMoney());
-        }
-
-        IEnumerator LerpMoney()
-        {
             for (int i = 0; i <= _newList.Count -1 ; i++)
             {
-                
-
                 _newList[i].transform
                     .DOMoveX(i == 0 ? transform.position.x : _newList[i - 1].transform.position.x, .2f);
             }
-            
-            yield return new WaitForSeconds(.2f);
         }
     }
 }
